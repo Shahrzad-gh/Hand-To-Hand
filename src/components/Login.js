@@ -1,24 +1,25 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { signIn } from "../store//actions/authActions";
+import { Redirect } from "react-router-dom";
 class Login extends Component {
   state = {
     email: "",
     password: "",
   };
   handleChange = (e) => {
-    console.log(e.target.value);
     this.setState({
       [e.target.id]: e.target.value,
     });
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
     this.props.signIn(this.state);
   };
   render() {
-    const { authError } = this.props;
+    const { authError, auth } = this.props;
+    console.log("LOGIN", auth.uid);
+    if (auth.uid) return <Redirect to="/Dashboard" auth={auth} />;
     return (
       <div className="login d-flex align-items-center flex-column justify-content-center">
         <div className="container-md col-md-12 bg-light">
@@ -46,15 +47,14 @@ class Login extends Component {
               <span>Remember me</span>
             </div>
             <div className="form-group d-flex justify-content-between d-inline-block ">
-              <a className="d-inline-block" href="#">
+              <a className="d-inline-block" href="/">
                 Forget password?
               </a>
             </div>
             <div className="form-group">
-              <button
-                value="submit"
-                className="btn btn-info btn-md btn-block"
-              />
+              <button value="submit" className="btn btn-info btn-md btn-block">
+                Login
+              </button>
               {authError ? (
                 <p className="text-danger text-center">Login Faild</p>
               ) : null}
@@ -68,6 +68,7 @@ class Login extends Component {
 const mapStateToProps = (state) => {
   return {
     authError: state.auth.authError,
+    auth: state.firebase.auth,
   };
 };
 const mapDispatchToProps = (dispatch) => {

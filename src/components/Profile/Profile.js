@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 export default class Profile extends Component {
   render() {
     return (
@@ -19,14 +18,15 @@ export default class Profile extends Component {
         <div className="text-center card-content profile-short-info ">
           <div className="row">
             <div className="col s5">
-              <h6>Folowing</h6>
+              <h6>Following</h6>
               <p>4</p>
             </div>
             <div className="col s5">
-              <h6>Folowing</h6>
+              <h6>Followers</h6>
               <p>40</p>
             </div>
           </div>
+          {/* <button className="btn">Follow</button> */}
         </div>
       </div>
     );

@@ -11,20 +11,17 @@ function SignInLinks(props) {
       >
         <li>
           <a href="/">
-            <i className="fas fa-home mr-2 fa-sm"></i>
-            Home
+            <i className="fas fa-home mr-2 fa-sm">Home</i>
           </a>
         </li>
         <li>
           <a href="/">
-            <i className="fas fa-stream mr-2 fa-sm"></i>
-            Timeline
+            <i className="fas fa-stream mr-2 fa-sm">Timeline</i>
           </a>
         </li>
         <li>
           <Link to="Message">
-            <i className="fas fa-envelope mr-2 fa-sm"></i>
-            Message
+            <i className="fas fa-envelope mr-2 fa-sm">Message</i>
           </Link>
         </li>
         <li className="right">
@@ -33,11 +30,13 @@ function SignInLinks(props) {
           </a>
         </li>
         <li className="right">
-          <a onClick={props.signOut}>Sign Out</a>
+          <a href="/" onClick={props.signOut}>
+            Sign Out
+          </a>
         </li>
         <li className="right">
           <button className="btn btn-floating bg-floating" type="button">
-            SG
+            {props.profile.initials}
           </button>
         </li>
       </ul>

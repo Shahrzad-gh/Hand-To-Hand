@@ -20,7 +20,7 @@ export default class MessageConversation extends Component {
               <p>Online</p>
             </div>
           </div>
-          <a className="mt-2" href="#" title>
+          <a className="mt-2" href="/" title>
             <i class="mr-5 fas fa-ellipsis-v"></i>
           </a>
         </div>
@@ -104,17 +104,17 @@ export default class MessageConversation extends Component {
             </div>
             <ul>
               <li>
-                <a href="#">
+                <a href="/">
                   <i className="fa fa-smile-o"></i>
                 </a>
               </li>
               <li>
-                <a>
+                <a href="/">
                   <i className="fa fa-camera"></i>
                 </a>
               </li>
               <li>
-                <a>
+                <a href="/">
                   <i className="fa fa-paperclip"></i>
                 </a>
               </li>

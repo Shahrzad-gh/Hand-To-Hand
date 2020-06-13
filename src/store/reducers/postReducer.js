@@ -13,6 +13,12 @@ const postReducer = (state = initialState, action) => {
     case "CREATE_POST_ERROR":
       console.log("create post ERROR", action.err);
       return state;
+    case "LIKE_POST_SUCCESS":
+      console.log("like post success");
+      return state;
+    case "LIKR_POST_ERROR":
+      console.log("like post ERROR", action.err);
+      return state;
     default:
       return state;
   }

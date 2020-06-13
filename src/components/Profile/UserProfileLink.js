@@ -2,12 +2,23 @@ import React from "react";
 import TabList from "../TabList";
 import Info from "../Profile/Info";
 import PostsList from "../Posts/PostsList";
-
-export default function MyProfileLinks() {
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+function UserProfileLinks(props) {
+  console.log("upl-props", props);
+  const user = props.user;
+  console.log("upl-user", user);
+  const posts = props.posts;
+  const myposts = posts
+    ? posts.filter((post) => post.authorId === user.id)
+    : null;
   return (
     <div>
       <div className="container m-2">
-        <strong>Name</strong>
+        <strong>
+          {user.firstName} {user.lastName}
+        </strong>
         <p>
           username
           <i className="far fa-star ml-2"></i>
@@ -23,7 +34,7 @@ export default function MyProfileLinks() {
             <Info />
           </div>
           <div label="Posts" className="tab-content">
-            <PostsList />
+            <PostsList posts={myposts} auth={user.id} />
           </div>
         </TabList>
       </div>
@@ -33,3 +44,12 @@ export default function MyProfileLinks() {
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    posts: state.firestore.ordered.Posts,
+  };
+};
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: "Posts" }])
+)(UserProfileLinks);

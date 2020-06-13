@@ -1,0 +1,13 @@
+{
+  "hosting": {
+    "hosting": "hand2hand",
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

@@ -1,26 +1,26 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createPost } from "../../store/actions/postActions";
-
+import { Redirect } from "react-router-dom";
 class NewPost extends Component {
   state = {
-    title: "",
     content: "",
   };
   handleChange = (e) => {
-    console.log(e.target.value);
     this.setState({
-      content: e.target.value,
+      [e.target.id]: e.target.value,
     });
   };
   handleSubmit = (e) => {
-    console.log(this.state);
+    console.log("ADD_POST", e);
     e.preventDefault();
     this.props.createPost(this.state);
   };
   render() {
+    const { auth } = this.props;
+    if (!auth.uid) return <Redirect to="/Login" />;
     return (
-      <div>
+      <div className="newPost">
         <div className="card">
           <div className="col-md-12">
             <div className="row">
@@ -28,7 +28,7 @@ class NewPost extends Component {
                 <form onSubmit={this.handleSubmit}>
                   <div className="input-field">
                     <textarea
-                      id=""
+                      id="content"
                       placeholder="share a post"
                       className="materialize-textarea"
                       onChange={this.handleChange}
@@ -46,9 +46,14 @@ class NewPost extends Component {
     );
   }
 }
-const mapStateToProps = (dispatch) => {
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
   return {
     createPost: (post) => dispatch(createPost(post)),
   };
 };
-export default connect(null, mapStateToProps)(NewPost);
+export default connect(mapStateToProps, mapDispatchToProps)(NewPost);

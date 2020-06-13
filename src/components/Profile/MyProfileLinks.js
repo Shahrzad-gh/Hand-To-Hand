@@ -9,13 +9,19 @@ import { compose } from "redux";
 
 class MyProfileLinks extends Component {
   render() {
-    const { posts } = this.props;
-    console.log("Link", { posts });
+    const { auth, posts, user } = this.props;
+    const uid = auth.uid;
+    console.log("MPLPPP", posts);
+    const myposts = posts
+      ? posts.filter((post) => post.authorId === uid)
+      : null;
 
     return (
       <div>
         <div className="container m-2">
-          <strong>Name</strong>
+          <strong>
+            {user.firstName} {user.lastName}
+          </strong>
           <p>
             username
             <i className="far fa-star ml-2"></i>
@@ -34,7 +40,7 @@ class MyProfileLinks extends Component {
               <Info />
             </div>
             <div label="Posts" className="tab-content">
-              <PostsList posts={posts} />
+              <PostsList posts={myposts} auth={auth.uid} />
             </div>
             <div label="Likes" className="tab-content"></div>
             <div label="Mention" className="tab-content"></div>
@@ -45,8 +51,8 @@ class MyProfileLinks extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log("state.firestore.ordered.posts:", state);
   return {
+    auth: state.firebase.auth,
     posts: state.firestore.ordered.Posts,
   };
 };
