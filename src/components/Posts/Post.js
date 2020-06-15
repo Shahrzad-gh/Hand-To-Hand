@@ -39,7 +39,7 @@ export default class Post extends Component {
               </div>
               <div className="row">
                 <div className="card-footer col-md-12">
-                  <button className="btn mr-2" onClick={this.handleClick}>
+                  <button className="btn mr-2" onClick={this.handlelick}>
                     <i class="far fa-heart mr-1"></i>
                     <span>10</span>
                   </button>

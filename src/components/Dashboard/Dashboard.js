@@ -8,9 +8,9 @@ import Login from "../../components/Login";
 import PostsList from "../Posts/PostsList";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+
 class Dashboard extends Component {
   render() {
     const { posts, auth, profile, notifications, users } = this.props;

@@ -10,14 +10,24 @@ const createNotification = (notification) => {
     .then((doc) => console.log("notification added", doc));
 };
 
-// exports.likesCount = functions.firestore
-//   .document("Likes/{likeId}")
-//   .onWrite((change, contex) => {});
+// exports.postliked = functions.database.ref("Posts/{postId}")
+//   .onUpdate((change, context) => {
+//     const before =change.before.val();
+//     const after = change.after.val();
+//     change.after.
+//     const notification = {
+//       content: "Added a new like",
+//       user: `${post.authorFirstName} ${post.authorLastName}`,
+//       time: admin.firestore.FieldValue.serverTimestamp(),
+//     };
+//     return createNotification(notification);
+//   });
 
 exports.projectCreated = functions.firestore
   .document("Posts/{postId}")
   .onCreate((doc) => {
     const post = doc.data();
+    console.log("ON_CREATE", post);
     const notification = {
       content: "Added a new project",
       user: `${post.authorFirstName} ${post.authorLastName}`,

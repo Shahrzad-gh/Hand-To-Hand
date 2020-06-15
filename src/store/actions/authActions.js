@@ -10,6 +10,16 @@ export const signIn = (credentials) => {
       .catch((err) => {
         dispatch({ type: "LOGIN_ERROR", err });
       });
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      var userr = firebase.auth().currentUser;
+      console.log("S*", userr);
+      if (user) {
+        // User is signed in.
+      } else {
+        // No user is signed in.
+      }
+    });
   };
 };
 
@@ -37,6 +47,10 @@ export const signUp = (newUser) => {
       .auth()
       .createUserWithEmailAndPassword(newUser.email, newUser.password)
       .then((response) => {
+        response.user.updateProfile({
+          displayName: newUser.firstName + " " + newUser.lastName,
+        });
+        // console.log("signup", response.user);
         return firestore
           .collection("users")
           .doc(response.user.uid)

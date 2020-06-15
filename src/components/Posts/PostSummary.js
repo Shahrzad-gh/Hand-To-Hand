@@ -3,7 +3,7 @@ import moment from "moment";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { likePost } from "../../store/actions/postActions";
+import { likePost, unlikePost } from "../../store/actions/postActions";
 
 class PostSummary extends Component {
   state = {
@@ -13,25 +13,45 @@ class PostSummary extends Component {
     isLiked: false,
   };
   handleClick = (e) => {
-    console.log("CLICK", e.target.dataset.userid);
-    const newCount = this.state.likeCount + 1;
-    this.setState(
-      {
-        userId: e.target.dataset.userid,
-        postId: e.target.dataset.postid,
-        likeCount: newCount,
-        isLiked: true,
-      },
-      function () {
-        console.log("state", this.state);
-        this.props.likePost(this.state);
-      }
-    );
+    console.log("CLICK", e.target.dataset);
+    const count = Number(e.target.dataset.like);
+    console.log("likeCount", Number(e.target.dataset.like));
+    let newCount = 0;
+    if (e.target.id === "like") {
+      newCount = count + 1;
+      this.setState(
+        {
+          userId: e.target.dataset.userid,
+          postId: e.target.dataset.postid,
+          likeCount: newCount,
+          isLiked: !this.state.isLiked,
+        },
+        function () {
+          console.log("state-likePost", this.state.likeCount);
+          this.props.likePost(this.state);
+        }
+      );
+    } else {
+      newCount = count - 1;
+      this.setState(
+        {
+          userId: e.target.dataset.userid,
+          postId: e.target.dataset.postid,
+          likeCount: newCount,
+          isLiked: !this.state.isLiked,
+        },
+        function () {
+          console.log("state-unlikePost", this.state.likeCount);
+          this.props.unlikePost(this.state);
+        }
+      );
+    }
+
     //console.log("PSSS", this.state);
   };
   render() {
     const { post } = this.props;
-    console.log("postID", post.id);
+    console.log("postID", post);
     const { auth } = this.props;
     console.log("userID", auth);
     return (
@@ -68,22 +88,24 @@ class PostSummary extends Component {
                 <button className="btn p-0" onClick={this.handleClick}>
                   {!this.state.isLiked && (
                     <i
-                      id={post.id}
+                      id="like"
                       data-userid={auth}
                       data-postid={post.id}
+                      data-like={post.likeCount}
                       className="far fa-heart p-0 mr-1"
                     ></i>
                   )}
                   {this.state.isLiked && (
                     <i
-                      id={post.id}
+                      id="unlike"
                       data-userid={auth}
                       data-postid={post.id}
+                      data-like={post.likeCount}
                       className="fas fa-heart p-0 mr-1"
                     ></i>
                   )}
                 </button>
-                <span>{this.state.likeCount}</span>
+                <span>{post.likeCount}</span>
                 <Link to={"/post/" + post.id} key={post.id}>
                   <i className="far fa-comment-alt mr-1 ml-2 text-dark"></i>
                   <span className="text-dark">{post.comments}</span>
@@ -101,9 +123,11 @@ class PostSummary extends Component {
     );
   }
 }
+
 const mapDispatchToProps = (dispatch) => {
   return {
     likePost: (post) => dispatch(likePost(post)),
+    unlikePost: (post) => dispatch(unlikePost(post)),
   };
 };
 export default connect(null, mapDispatchToProps)(PostSummary);

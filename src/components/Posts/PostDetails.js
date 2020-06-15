@@ -5,6 +5,8 @@ import { firestoreConnect } from "react-redux-firebase";
 import { connect } from "react-redux";
 import moment from "moment";
 import { Component } from "react";
+import AddComment from "../Comments/AddComment";
+import CommentList from "../Comments/CommentsList";
 
 class PostDetails extends Component {
   state = {
@@ -18,13 +20,19 @@ class PostDetails extends Component {
     });
   };
   render() {
-    const { post, auth } = this.props;
+    const { post, auth, comments, profile } = this.props;
+    const postId = this.props.match.params.id;
+    const thisPostComments = comments
+      ? Object.values(comments).filter((comment) => comment.postId == postId)
+      : null;
+    console.log("DETAILS**", auth);
+    console.log("DETAILS*", thisPostComments);
     if (!auth.uid) return <Redirect to="/Login" />;
     if (post) {
       return (
         <div className="postDetails container-xl mt-3 p-0">
           <div className="row col-md-8">
-            <div className="card col-md-12 p-2">
+            <div className="card col-md-12 p-0">
               <div className="card-header">
                 <img
                   width="50"
@@ -43,12 +51,12 @@ class PostDetails extends Component {
               <div className="card-content">
                 <span>{post.content}</span>
               </div>
-              <div>
+              <div className="ml-2">
                 <span>
                   Created At: {moment(post.createAt.toDate()).calendar()}
                 </span>
               </div>
-              <div className="card-footer col-md-12">
+              <div className="card-footer">
                 <button className="btn">
                   <i class="far fa-heart mr-1" onClick={this.handleClick}></i>
                 </button>
@@ -60,6 +68,8 @@ class PostDetails extends Component {
                   <span>{post.views}</span>
                 </a>
               </div>
+              <AddComment postId={postId} auth={auth} />
+              <CommentList comments={thisPostComments} auth={auth} />
             </div>
           </div>
         </div>
@@ -72,15 +82,25 @@ class PostDetails extends Component {
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
   const posts = state.firestore.data.Posts;
+  const allComments = state.firestore.data.comments;
   const post = posts ? posts[id] : null;
-  console.log(state);
-  console.log(ownProps);
+  // const thisPostCommets = Object.key(allComments).filter((key) =>
+  //   posts[id].include(key).reduce((obj, key) => {
+  //     obj[key] = allComments[key];
+  //     return obj;
+  //   }, {})
+  // );
+  console.log("**", state.firebase.auth);
   return {
+    id: id,
     post: post,
     auth: state.firebase.auth,
+    comments: allComments,
+    profile: state.firebase.profile,
+    user: state.firebase.comments,
   };
 };
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: "Posts" }])
+  firestoreConnect([{ collection: "Posts" }, { collection: "comments" }])
 )(PostDetails);

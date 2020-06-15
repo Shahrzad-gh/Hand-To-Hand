@@ -6,27 +6,27 @@ function SignInLinks(props) {
   return (
     <div>
       <ul
-        className="right nav mr-auto ml-5 hide-on-med-and-down right"
+        className="signInLinks right nav  mr-auto ml-5 hide-on-med-and-down right"
         id="nav-mobile"
       >
         <li>
           <a href="/">
-            <i className="fas fa-home mr-2 fa-sm">Home</i>
+            <i className="fas fa-home"> Home</i>
           </a>
         </li>
         <li>
           <a href="/">
-            <i className="fas fa-stream mr-2 fa-sm">Timeline</i>
+            <i className="fas fa-stream"> Timeline</i>
           </a>
         </li>
         <li>
           <Link to="Message">
-            <i className="fas fa-envelope mr-2 fa-sm">Message</i>
+            <i className="fas fa-envelope"> Message</i>
           </Link>
         </li>
         <li className="right">
           <a href="/">
-            <i className="fas fa-exclamation mr-2 fa-sm"></i>
+            <i className="fas fa-exclamation"></i>
           </a>
         </li>
         <li className="right">

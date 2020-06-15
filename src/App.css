@@ -1,17 +1,16 @@
-body,
-html {
+body, html {
   height: 100%;
   background-color: #ff562209;
 }
 
-.fa {
+/* .fa {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} */
 
 .NotificationsList li {
   list-style: none;
@@ -60,14 +59,17 @@ i {
   box-shadow: none;
   border: none;
 }
+
 .profile .profile-header-pic {
   position: relative;
 }
+
 .profile .profile-header-change-btn {
   position: absolute;
   top: 85px;
   left: 85px;
 }
+
 .profile-pic {
   position: relative;
   margin-top: -40px;
@@ -312,7 +314,7 @@ i {
   bottom: 25px;
 }
 
-.message-inner-data > p {
+.message-inner-data>p {
   float: right;
   width: 60%;
   background-color: #e44d3a;
@@ -327,7 +329,7 @@ i {
   border-radius: 15px;
 }
 
-.message-data.st3 .message-inner-data > p {
+.message-data.st3 .message-inner-data>p {
   background-color: #efefef;
   color: #686868;
   width: auto;
@@ -404,18 +406,7 @@ i {
   width: 100%;
 }
 
-.z-depth-1,
-nav,
-.card-panel,
-.card,
-.toast,
-.btn,
-.btn-large,
-.btn-small,
-.btn-floating,
-.dropdown-content,
-.collapsible,
-.sidenav {
+.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
@@ -428,13 +419,19 @@ nav,
   height: 20rem;
 }
 
+/* Logo Font */
+
 .font-family-DancingScript {
   font-family: "Dancing Script", cursive;
 }
+
+/* End of Logo Font */
+
 .card-footer .btn {
   background-color: transparent;
   color: black;
 }
+
 .btn {
   background-color: #1e71a2;
 }
@@ -446,10 +443,12 @@ nav,
 .post-list {
   background-color: #ff5722;
 }
+
 .card-header .btn {
   background-color: transparent;
   color: black;
 }
+
 .up {
   margin-top: 50px;
 }
