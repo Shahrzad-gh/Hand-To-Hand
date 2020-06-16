@@ -25,8 +25,7 @@ class Comment extends Component {
     this.props.addComment(this.state);
   };
   render() {
-    const { auth } = this.props;
-    const { postId } = this.props;
+    const { auth, postId } = this.props;
     console.log("WHOADD", auth);
     return (
       <div className="comment">

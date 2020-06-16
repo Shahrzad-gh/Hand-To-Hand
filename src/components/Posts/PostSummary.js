@@ -3,7 +3,11 @@ import moment from "moment";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { likePost, unlikePost } from "../../store/actions/postActions";
+import {
+  likePost,
+  unlikePost,
+  deletePost,
+} from "../../store/actions/postActions";
 
 class PostSummary extends Component {
   state = {
@@ -49,11 +53,16 @@ class PostSummary extends Component {
 
     //console.log("PSSS", this.state);
   };
+
+  handleDelete = (e) => {
+    console.log("DEL", e.target.dataset.postid);
+    this.props.deletePost(e.target.dataset.postid);
+  };
   render() {
     const { post } = this.props;
-    console.log("postID", post);
+    console.log("postID-summary", post.authorId);
     const { auth } = this.props;
-    console.log("userID", auth);
+    console.log("userID", auth.uid);
     return (
       <div className="postSummary">
         <div className="card col-md-12 p-0">
@@ -73,6 +82,15 @@ class PostSummary extends Component {
                   </strong>
                   <a className="right">
                     <i class="far fa-bookmark "></i>
+                  </a>
+                  <a className="right">
+                    {post.authorId === auth.uid ? (
+                      <i
+                        class="fas fa-trash mr-2"
+                        data-postId={post.id}
+                        onClick={this.handleDelete}
+                      ></i>
+                    ) : null}
                   </a>
                 </div>
               </div>
@@ -128,6 +146,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     likePost: (post) => dispatch(likePost(post)),
     unlikePost: (post) => dispatch(unlikePost(post)),
+    deletePost: (post) => dispatch(deletePost(post)),
   };
 };
 export default connect(null, mapDispatchToProps)(PostSummary);

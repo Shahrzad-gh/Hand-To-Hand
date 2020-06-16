@@ -3,6 +3,7 @@ import PostSummary from "./PostSummary";
 
 export default function PostsList({ posts, auth }) {
   const user = auth;
+  console.log("POSTLIST", posts);
   console.log("POSTLIST", auth);
   return (
     <div className="postsList">

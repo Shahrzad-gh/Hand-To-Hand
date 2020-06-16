@@ -425,6 +425,15 @@ i {
   font-family: "Dancing Script", cursive;
 }
 
+.comment {
+  position: relative;
+}
+
+.comment a i {
+  position: absolute;
+  right: 60px;
+}
+
 /* End of Logo Font */
 
 .card-footer .btn {

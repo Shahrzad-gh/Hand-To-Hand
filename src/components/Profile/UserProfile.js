@@ -4,7 +4,6 @@ import Profile from "../Profile/Profile";
 import NotificationsList from "../Notifications/NotificationsList";
 import Suggestion from "../Dashboard/Suggestion";
 import UserProfileLink from "./UserProfileLink";
-import Setting from "../Setting/Setting";
 export default function UserProfile(props) {
   const notifications = props.location.props.notifications;
   const user = props.location.props.user;
@@ -37,7 +36,6 @@ export default function UserProfile(props) {
             </div>
           </div>
           <div className="col-md-3">
-            <Setting />
             <NotificationsList notifications={notifications} />
           </div>
         </div>

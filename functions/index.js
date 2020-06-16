@@ -23,13 +23,13 @@ const createNotification = (notification) => {
 //     return createNotification(notification);
 //   });
 
-exports.projectCreated = functions.firestore
+exports.postCreated = functions.firestore
   .document("Posts/{postId}")
   .onCreate((doc) => {
     const post = doc.data();
     console.log("ON_CREATE", post);
     const notification = {
-      content: "Added a new project",
+      content: "Added a new post",
       user: `${post.authorFirstName} ${post.authorLastName}`,
       time: admin.firestore.FieldValue.serverTimestamp(),
     };

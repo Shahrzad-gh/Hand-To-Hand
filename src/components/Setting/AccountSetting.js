@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-export default class Setting extends Component {
+export default class AccountSetting extends Component {
   render() {
     return (
       <div className="card col-md-12 p-0" id="card-setting">

@@ -96,10 +96,59 @@ export const addComment = (comment) => {
       .doc(comment.postId)
       .update({ comments: commentCount + 1 })
       .then(() => {
-        dispatch({ type: "COMMENT_COUNT_ADD_SUCCESS", comment });
+        dispatch({ type: "COMMENT_COUNT_INC_SUCCESS", comment });
       })
       .catch((err) => {
-        dispatch({ type: "COMMENT_COUNT_ADD_ERROR", err });
+        dispatch({ type: "COMMENT_COUNT_INC_ERROR", err });
+      });
+  };
+};
+
+export const deletePost = (postId) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    //make async call to database
+    const firestore = getFirestore();
+    console.log("post-firestore", firestore);
+    firestore
+      .collection("Posts")
+      .doc(postId)
+      .delete()
+      .then(() => {
+        dispatch({ type: "DELETE_POST_SUCCESS", postId });
+      })
+      .catch((err) => {
+        dispatch({ type: "DELETE_POST_ERROR", err });
+      });
+  };
+};
+
+export const deleteComment = (comment) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    //make async call to database
+    console.log("comment", comment);
+    const firestore = getFirestore();
+    const posts = getState().firestore.data.Posts;
+    const commentCount = posts[comment.postId].comments;
+    firestore
+      .collection("comments")
+      .doc(comment.commentId)
+      .delete()
+      .then(() => {
+        dispatch({ type: "DELETE_COMMENT_SUCCESS", comment });
+      })
+      .catch((err) => {
+        dispatch({ type: "DELETE_COMMENT_ERROR", err });
+      });
+
+    firestore
+      .collection("Posts")
+      .doc(comment.postId)
+      .update({ comments: commentCount - 1 })
+      .then(() => {
+        dispatch({ type: "COMMENT_COUNT_DEC_SUCCESS", commentCount });
+      })
+      .catch((err) => {
+        dispatch({ type: "COMMENT_COUNT_DEC_ERROR", err });
       });
   };
 };

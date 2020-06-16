@@ -1,18 +1,20 @@
 import React from "react";
 import CommentSummary from "./CommentSummary";
 
-export default function PostsList({ comments, auth }) {
-  console.log("POL", comments);
+export default function CommentList({ comments, auth }) {
+  console.log("comment-list", comments);
   return (
     <div className="commentsList">
       {comments &&
         comments.map((comment) => {
+          console.log("map", comment);
           return (
             <CommentSummary
               comment={comment}
-              key={comment.postId}
-              user={comment.userId}
-              username={comment.username}
+              key={comment[1].postId}
+              user={comment[1].userId}
+              username={comment[1].username}
+              auth={auth}
             />
           );
         })}

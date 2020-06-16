@@ -4,7 +4,7 @@ import Profile from "../Profile/Profile";
 import NotificationsList from "../Notifications/NotificationsList";
 import Suggestion from "../Dashboard/Suggestion";
 import MyProfileLinks from "./MyProfileLinks";
-import Setting from "../Setting/Setting";
+import Setting from "../Setting/AccountSetting";
 export default function MyProfile(props) {
   console.log("MYPROF", props);
   const notifications = props.location.props.state.notifications;
