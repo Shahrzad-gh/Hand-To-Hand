@@ -4,7 +4,7 @@ import Profile from "../Profile/Profile";
 import NotificationsList from "../Notifications/NotificationsList";
 import Suggestion from "../Dashboard/Suggestion";
 import MyProfileLinks from "./MyProfileLinks";
-import Setting from "../Setting/AccountSetting";
+import { Link } from "react-router-dom";
 export default function MyProfile(props) {
   console.log("MYPROF", props);
   const notifications = props.location.props.state.notifications;
@@ -38,11 +38,18 @@ export default function MyProfile(props) {
             </div>
           </div>
           <div className="col-md-3">
-            <Setting />
-            <NotificationsList
-              notifications={notifications}
-              suggestions={userSuggestions}
-            />
+            <div className="row">
+              <Link to="/setting/">
+                <a href="/" className="btn text-light ">
+                  Setting
+                  <i class="fas fa-cog mr-2 text-light"></i>
+                </a>
+              </Link>
+              <NotificationsList
+                notifications={notifications}
+                suggestions={userSuggestions}
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-export default class AccountSetting extends Component {
+export default class Privacy extends Component {
   render() {
     return (
       <div className="container">
-        <h6>AccountSetting</h6>
+        <h6>Privacy</h6>
       </div>
     );
   }

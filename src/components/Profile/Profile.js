@@ -2,8 +2,8 @@ import React, { Component } from "react";
 export default class Profile extends Component {
   render() {
     return (
-      <div className="profile card bg-light">
-        <div className="container card-img text-center">
+      <div className="card text-center m-0">
+        <div className="profile card-img  bg-light">
           <img
             width="120"
             height="120"
@@ -11,10 +11,11 @@ export default class Profile extends Component {
             alt=""
             className="profile-pic rounded-circle border border-dark"
           />
+          <button className="btn btn-floating change-profile-pic" type="button">
+            <i className="camera-icon fas fa-camera fa-xs"></i>
+          </button>
         </div>
-        <button className="btn btn-floating change-profile-pic" type="button">
-          <i className="fas fa-camera fa-xs"></i>
-        </button>
+
         <div className="text-center card-content profile-short-info ">
           <div className="row">
             <div className="col s5">
@@ -26,7 +27,7 @@ export default class Profile extends Component {
               <p>40</p>
             </div>
           </div>
-          {/* <button className="btn">Follow</button> */}
+          <button className="btn">Follow</button>
         </div>
       </div>
     );

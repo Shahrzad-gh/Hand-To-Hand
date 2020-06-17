@@ -7,6 +7,7 @@ import MyProfile from "./components/Profile/MyProfile";
 import UserProfile from "./components/Profile/UserProfile";
 import Message from "./components/Profile/Message";
 import PostDetails from "./components/Posts/PostDetails";
+import Setting from "./components/Setting/Setting";
 function App() {
   return (
     <div>
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/user/:id" component={UserProfile} />
         <Route path="/post/:id" component={PostDetails} />
         <Route exact path="/Message" component={Message} />
+        <Route exact path="/Setting" component={Setting} />
       </Router>
     </div>
   );

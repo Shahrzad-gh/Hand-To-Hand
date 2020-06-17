@@ -1,5 +1,4 @@
 body, html {
-  height: 100%;
   background-color: #ff562209;
 }
 
@@ -11,6 +10,23 @@ body, html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 } */
+
+.card {
+  border-color: #e44d3a;
+}
+
+.postSummary .card {
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.postSummary .card-footer {
+  border-bottom-right-radius: 25px;
+}
+
+.postSummary .card-header {
+  border-top-left-radius: 25px;
+}
 
 .NotificationsList li {
   list-style: none;
@@ -48,11 +64,20 @@ i {
   font-size: 1rem !important;
 }
 
+.dashboard {
+  position: relative;
+}
+
 .change-profile-pic {
   position: relative;
   align-self: flex-end;
-  margin-top: -120px;
-  margin-right: 50px;
+  right: 200px;
+  top: -60px;
+}
+
+.camera-icon {
+  display: fixed;
+  left: 5px
 }
 
 #profile-links {
@@ -72,7 +97,7 @@ i {
 
 .profile-pic {
   position: relative;
-  margin-top: -40px;
+  top: -60px;
 }
 
 .message-section {
@@ -400,6 +425,10 @@ i {
   margin-right: 15px;
 }
 
+.SettingTabContent .nav a {
+  display: block
+}
+
 .message-page {
   float: left;
   position: relative;
@@ -449,6 +478,19 @@ i {
   background-color: #ff9675;
 }
 
+.profile .change-profile-pic {
+  position: absolute;
+}
+
+.change-profile-pic i {
+  position: relative;
+  left: -4px;
+}
+
+.profileThumbnail {
+  border-radius: 45px/15px;
+}
+
 .post-list {
   background-color: #ff5722;
 }
@@ -463,6 +505,7 @@ i {
 }
 
 .bg-half-indigo {
+  border-radius: 45px/15px;
   height: 6rem;
   background-color: #1e71a2;
 }
