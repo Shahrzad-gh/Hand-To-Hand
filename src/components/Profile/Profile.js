@@ -11,9 +11,17 @@ export default class Profile extends Component {
             alt=""
             className="profile-pic rounded-circle border border-dark"
           />
-          <button className="btn btn-floating change-profile-pic" type="button">
-            <i className="camera-icon fas fa-camera fa-xs"></i>
-          </button>
+          <div className="add-pic">
+            <input
+              type="file"
+              id="id"
+              accept="image/*"
+              className="btn btn-floating change-profile-pic"
+            />
+            <label className="camera-icon" htmlFor="id">
+              <i className="fas fa-camera fa-xs"></i>
+            </label>
+          </div>
         </div>
 
         <div className="text-center card-content profile-short-info ">

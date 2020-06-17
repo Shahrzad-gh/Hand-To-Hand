@@ -8,6 +8,8 @@ import {
   unlikePost,
   deletePost,
 } from "../../store/actions/postActions";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
 class PostSummary extends Component {
   state = {
@@ -31,7 +33,7 @@ class PostSummary extends Component {
           isLiked: !this.state.isLiked,
         },
         function () {
-          console.log("state-likePost", this.state.likeCount);
+          console.log("state-likePost", this.state);
           this.props.likePost(this.state);
         }
       );
@@ -59,10 +61,20 @@ class PostSummary extends Component {
     this.props.deletePost(e.target.dataset.postid);
   };
   render() {
-    const { post } = this.props;
+    const { post, likes } = this.props;
+    console.log("PROPS", this.props);
+
     console.log("postID-summary", post.authorId);
     const { auth } = this.props;
     console.log("userID", auth.uid);
+    const x =
+      likes &&
+      Object.values(likes).map((item) =>
+        item.userId === auth.uid && item.postId === post.id ? true : false
+      );
+    console.log("isLiked", x);
+
+    console.log("state", likes);
     return (
       <div className="postSummary">
         <div className="card col-md-12 p-0">
@@ -107,7 +119,7 @@ class PostSummary extends Component {
                   {!this.state.isLiked && (
                     <i
                       id="like"
-                      data-userid={auth}
+                      data-userid={auth.uid}
                       data-postid={post.id}
                       data-like={post.likeCount}
                       className="far fa-heart p-0 mr-1"
@@ -126,7 +138,7 @@ class PostSummary extends Component {
                 <span>{post.likeCount}</span>
                 <Link to={"/post/" + post.id} key={post.id}>
                   <i className="far fa-comment-alt mr-1 ml-2 text-dark"></i>
-                  <span className="text-dark">{post.comments}</span>
+                  <span className="text-dark">{post.commentCount}</span>
                 </Link>
 
                 <a className="right">
@@ -141,7 +153,13 @@ class PostSummary extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  const likes = state.firestore.data.likes;
 
+  return {
+    likes: likes,
+  };
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     likePost: (post) => dispatch(likePost(post)),
@@ -149,4 +167,7 @@ const mapDispatchToProps = (dispatch) => {
     deletePost: (post) => dispatch(deletePost(post)),
   };
 };
-export default connect(null, mapDispatchToProps)(PostSummary);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  firestoreConnect([{ collection: "likes" }])
+)(PostSummary);

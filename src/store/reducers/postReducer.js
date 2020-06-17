@@ -19,11 +19,23 @@ const postReducer = (state = initialState, action) => {
     case "LIKR_POST_ERROR":
       console.log("like post ERROR", action.err);
       return state;
+    case "LIKE_POST_INC_SUCCESS":
+      console.log("like post increase success");
+      return state;
+    case "LIKR_POST_INC_ERROR":
+      console.log("like post increase ERROR", action.err);
+      return state;
     case "UNLIKE_POST_SUCCESS":
       console.log("unlike post success");
       return state;
     case "UNLIKR_POST_ERROR":
       console.log("unlike post error", action.err);
+      return state;
+    case "UNLIKE_POST_DEC_SUCCESS":
+      console.log("unlike post decrease success");
+      return state;
+    case "UNLIKR_POST_DEC_ ERROR":
+      console.log("unlike post decrease error", action.err);
       return state;
     case "COMMENT_ADD_SUCCESS":
       console.log("add comment success");

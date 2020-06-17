@@ -13,8 +13,8 @@ export const createPost = (post) => {
         authorLastName: profile.lastName,
         authorId: authorId,
         likeCount: 0,
-        comments: 0,
-        views: 0,
+        commentCount: 0,
+        viewCount: 0,
         createAt: new Date(),
       })
       .then(() => {
@@ -31,12 +31,11 @@ export const likePost = (post) => {
     //make async call to database
     console.log("Action", post);
     const firestore = getFirestore();
-    console.log("postAction-postId", post.postId);
+    console.log("postAction-post", post);
     firestore
-      .collection("Posts")
-      .doc(post.postId)
-      .update({
-        likeCount: post.likeCount,
+      .collection("likes")
+      .add({
+        postId: post.postId,
         userId: post.userId,
       })
       .then(() => {
@@ -44,6 +43,20 @@ export const likePost = (post) => {
       })
       .catch((err) => {
         dispatch({ type: "LIKE_POST_ERROR", err });
+      });
+    const posts = getState().firestore.data.Posts;
+    const likeCount = posts[post.postId].likeCount;
+    firestore
+      .collection("Posts")
+      .doc(post.postId)
+      .update({
+        likeCount: likeCount + 1,
+      })
+      .then(() => {
+        dispatch({ type: "LIKE_POST_INC_SUCCESS", post });
+      })
+      .catch((err) => {
+        dispatch({ type: "LIKE_POST_INC_ERROR", err });
       });
   };
 };
@@ -53,6 +66,7 @@ export const unlikePost = (post) => {
     //make async call to database
     console.log("Action", post);
     const firestore = getFirestore();
+
     console.log("postAction-postId", post.postId);
     firestore
       .collection("Posts")
@@ -66,6 +80,21 @@ export const unlikePost = (post) => {
       })
       .catch((err) => {
         dispatch({ type: "UNLIKE_POST_ERROR", err });
+      });
+
+    const posts = getState().firestore.data.Posts;
+    const likeCount = posts[post.postId].likeCount;
+    firestore
+      .collection("Posts")
+      .doc(post.postId)
+      .update({
+        likeCount: likeCount - 1,
+      })
+      .then(() => {
+        dispatch({ type: "UNLIKE_POST_DEC_SUCCESS", post });
+      })
+      .catch((err) => {
+        dispatch({ type: "UNLIKE_POST_DEC_ERROR", err });
       });
   };
 };
@@ -89,12 +118,12 @@ export const addComment = (comment) => {
         dispatch({ type: "COMMENT_ADD_ERROR", err });
       });
     const posts = getState().firestore.data.Posts;
-    const commentCount = posts[comment.postId].comments;
-    console.log("ActionADDnimber:", posts[comment.postId].comments);
+    const commentCount = posts[comment.postId].commentCount;
+    console.log("ActionADDnimber:", posts[comment.postId]);
     firestore
       .collection("Posts")
       .doc(comment.postId)
-      .update({ comments: commentCount + 1 })
+      .update({ commentCount: commentCount + 1 })
       .then(() => {
         dispatch({ type: "COMMENT_COUNT_INC_SUCCESS", comment });
       })
@@ -128,7 +157,8 @@ export const deleteComment = (comment) => {
     console.log("comment", comment);
     const firestore = getFirestore();
     const posts = getState().firestore.data.Posts;
-    const commentCount = posts[comment.postId].comments;
+    const commentCount = posts[comment.postId].commentCount;
+    console.log("COM_COUN", commentCount);
     firestore
       .collection("comments")
       .doc(comment.commentId)
@@ -143,7 +173,7 @@ export const deleteComment = (comment) => {
     firestore
       .collection("Posts")
       .doc(comment.postId)
-      .update({ comments: commentCount - 1 })
+      .update({ commentCount: commentCount - 1 })
       .then(() => {
         dispatch({ type: "COMMENT_COUNT_DEC_SUCCESS", commentCount });
       })

@@ -42,7 +42,6 @@ body, html {
 }
 
 .profile-short-info {
-  margin-top: 55px;
   padding-top: 20px;
 }
 
@@ -64,19 +63,15 @@ i {
   font-size: 1rem !important;
 }
 
-.dashboard {
-  position: relative;
-}
-
 .change-profile-pic {
   position: relative;
   align-self: flex-end;
-  right: 200px;
-  top: -60px;
+  margin-top: -40px;
+  margin-right: 50px;
 }
 
 .camera-icon {
-  display: fixed;
+  display: absolute;
   left: 5px
 }
 
@@ -478,13 +473,33 @@ i {
   background-color: #ff9675;
 }
 
+.profile {
+  position: relative;
+}
+
 .profile .change-profile-pic {
   position: absolute;
 }
 
-.change-profile-pic i {
+/* .SettingTabContent .setting {
+  display: inline;
+} */
+
+.add-pic i {
+  bottom: 0;
+  font-size: 14px;
+  box-shadow: none;
   position: relative;
-  left: -4px;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  background: #1e71a2;
+  padding: 12px;
+  color: #ffff;
+  left: 0;
+  top: -185px;
+  left: 25px;
 }
 
 .profileThumbnail {
@@ -515,4 +530,10 @@ input[type="checkbox"] {
   font-size: inherit;
   margin: 0;
   transform: translateX(-9999px);
+}
+
+.add-pic input[type=file] {
+  opacity: 0;
+  padding: 10px 0px 9px;
+  display: none;
 }
