@@ -153,13 +153,6 @@ class PostSummary extends Component {
     );
   }
 }
-const mapStateToProps = (state) => {
-  const likes = state.firestore.data.likes;
-
-  return {
-    likes: likes,
-  };
-};
 const mapDispatchToProps = (dispatch) => {
   return {
     likePost: (post) => dispatch(likePost(post)),
@@ -167,7 +160,4 @@ const mapDispatchToProps = (dispatch) => {
     deletePost: (post) => dispatch(deletePost(post)),
   };
 };
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect([{ collection: "likes" }])
-)(PostSummary);
+export default connect(null, mapDispatchToProps)(PostSummary);

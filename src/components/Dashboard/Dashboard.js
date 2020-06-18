@@ -13,7 +13,7 @@ import { compose } from "redux";
 
 class Dashboard extends Component {
   render() {
-    const { posts, auth, profile, notifications, users } = this.props;
+    const { posts, auth, profile, notifications, users, likes } = this.props;
     if (!auth.uid) return <Redirect to="/Login" />;
     return (
       <div>
@@ -33,7 +33,7 @@ class Dashboard extends Component {
             <div className="col-md-6">
               <div className="col p-0">
                 <NewPost />
-                <PostsList posts={posts} auth={auth} />
+                <PostsList posts={posts} auth={auth} likes={likes} />
               </div>
             </div>
             <div className="col-md-3">
@@ -48,17 +48,21 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log("DASH", state);
+  console.log("LIKES", state.firestore.ordered);
   return {
     posts: state.firestore.ordered.Posts,
     profile: state.firebase.profile,
     auth: state.firebase.auth,
     notifications: state.firestore.ordered.notifications,
     users: state.firestore.ordered.users,
+    likes: state.firestore.ordered.likes,
   };
 };
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
+    { collection: "likes" },
     { collection: "Posts", orderBy: ["createAt", "desc"] },
     { collection: "notifications", limit: 3, orderBy: ["time", "desc"] },
     { collection: "users", limit: 5 },

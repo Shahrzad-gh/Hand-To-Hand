@@ -92,12 +92,7 @@ const mapStateToProps = (state, ownProps) => {
   const posts = state.firestore.data.Posts;
   const allComments = state.firestore.data.comments;
   const post = posts ? posts[id] : null;
-  // const thisPostCommets = Object.key(allComments).filter((key) =>
-  //   posts[id].include(key).reduce((obj, key) => {
-  //     obj[key] = allComments[key];
-  //     return obj;
-  //   }, {})
-  // );
+  const alllikes = state.firestore.data.likes;
   console.log("**", state.firebase.auth);
   return {
     id: id,
@@ -106,12 +101,14 @@ const mapStateToProps = (state, ownProps) => {
     comments: allComments,
     profile: state.firebase.profile,
     user: state.firebase.comments,
+    likes: alllikes,
   };
 };
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
     { collection: "Posts" },
+    { collection: "likes" },
     { collection: "comments", orderBy: ["createAt", "desc"] },
   ])
 )(PostDetails);
