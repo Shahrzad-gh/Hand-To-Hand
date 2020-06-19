@@ -15,6 +15,11 @@ class Dashboard extends Component {
   render() {
     const { posts, auth, profile, notifications, users, likes } = this.props;
     if (!auth.uid) return <Redirect to="/Login" />;
+    const myLikes =
+      likes && Object.values(likes).filter((item) => item.userId == auth.uid);
+    console.log("dashboard-OnlineUser", auth.uid);
+    console.log("dashboard-allikes", likes);
+    console.log("dashboard-MyLikes", myLikes);
     return (
       <div>
         <Navbar />
@@ -33,7 +38,7 @@ class Dashboard extends Component {
             <div className="col-md-6">
               <div className="col p-0">
                 <NewPost />
-                <PostsList posts={posts} auth={auth} likes={likes} />
+                <PostsList posts={posts} auth={auth} likes={myLikes} />
               </div>
             </div>
             <div className="col-md-3">
@@ -48,8 +53,6 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("DASH", state);
-  console.log("LIKES", state.firestore.ordered);
   return {
     posts: state.firestore.ordered.Posts,
     profile: state.firebase.profile,

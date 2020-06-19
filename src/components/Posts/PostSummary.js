@@ -21,6 +21,7 @@ class PostSummary extends Component {
   handleClick = (e) => {
     console.log("CLICK", e.target.dataset);
     const count = Number(e.target.dataset.like);
+    console.log("Am I liked this Post:", e.target.dataset.isliked);
     console.log("likeCount", Number(e.target.dataset.like));
     let newCount = 0;
     if (e.target.id === "like") {
@@ -30,7 +31,7 @@ class PostSummary extends Component {
           userId: e.target.dataset.userid,
           postId: e.target.dataset.postid,
           likeCount: newCount,
-          isLiked: !this.state.isLiked,
+          isLiked: e.target.dataset.isliked,
         },
         function () {
           console.log("state-likePost", this.state);
@@ -44,10 +45,10 @@ class PostSummary extends Component {
           userId: e.target.dataset.userid,
           postId: e.target.dataset.postid,
           likeCount: newCount,
-          isLiked: !this.state.isLiked,
+          isLiked: e.target.dataset.isliked,
         },
         function () {
-          console.log("state-unlikePost", this.state.likeCount);
+          console.log("state-unlikePost", this.state);
           this.props.unlikePost(this.state);
         }
       );
@@ -61,20 +62,15 @@ class PostSummary extends Component {
     this.props.deletePost(e.target.dataset.postid);
   };
   render() {
-    const { post, likes } = this.props;
+    const { post, mylikes } = this.props;
     console.log("PROPS", this.props);
 
     console.log("postID-summary", post.authorId);
     const { auth } = this.props;
     console.log("userID", auth.uid);
-    const x =
-      likes &&
-      Object.values(likes).map((item) =>
-        item.userId === auth.uid && item.postId === post.id ? true : false
-      );
-    console.log("isLiked", x);
+    console.log("LLLIIIKKKKEEE", mylikes);
+    const isLiked = mylikes && mylikes.includes(true);
 
-    console.log("state", likes);
     return (
       <div className="postSummary">
         <div className="card col-md-12 p-0">
@@ -116,25 +112,28 @@ class PostSummary extends Component {
               </div>
               <div className="card-footer col-md-12">
                 <button className="btn p-0" onClick={this.handleClick}>
-                  {!this.state.isLiked && (
+                  {!isLiked && (
                     <i
                       id="like"
                       data-userid={auth.uid}
                       data-postid={post.id}
                       data-like={post.likeCount}
+                      data-isliked={true}
                       className="far fa-heart p-0 mr-1"
                     ></i>
                   )}
-                  {this.state.isLiked && (
+                  {isLiked && (
                     <i
                       id="unlike"
                       data-userid={auth}
                       data-postid={post.id}
                       data-like={post.likeCount}
+                      data-isliked={false}
                       className="fas fa-heart p-0 mr-1"
                     ></i>
                   )}
                 </button>
+
                 <span>{post.likeCount}</span>
                 <Link to={"/post/" + post.id} key={post.id}>
                   <i className="far fa-comment-alt mr-1 ml-2 text-dark"></i>
