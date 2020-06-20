@@ -31,7 +31,7 @@ class PostSummary extends Component {
           userId: e.target.dataset.userid,
           postId: e.target.dataset.postid,
           likeCount: newCount,
-          isLiked: e.target.dataset.isliked,
+          isLiked: !this.state.isLiked,
         },
         function () {
           console.log("state-likePost", this.state);
@@ -45,7 +45,7 @@ class PostSummary extends Component {
           userId: e.target.dataset.userid,
           postId: e.target.dataset.postid,
           likeCount: newCount,
-          isLiked: e.target.dataset.isliked,
+          isLiked: !this.state.isLiked,
         },
         function () {
           console.log("state-unlikePost", this.state);
@@ -62,14 +62,16 @@ class PostSummary extends Component {
     this.props.deletePost(e.target.dataset.postid);
   };
   render() {
-    const { post, mylikes } = this.props;
+    const { post, likesId, isThisPostLike } = this.props;
     console.log("PROPS", this.props);
 
     console.log("postID-summary", post.authorId);
     const { auth } = this.props;
-    console.log("userID", auth.uid);
-    console.log("LLLIIIKKKKEEE", mylikes);
-    const isLiked = mylikes && mylikes.includes(true);
+    console.log("Is userID", auth.uid);
+    console.log("Likes this postID", post.id);
+    console.log(":", isThisPostLike);
+    //console.log("LLLIIIKKKKEEE", mylikes.postId == post.id);
+    const isLiked = false; //mylikes && mylikes.includes(null);
 
     return (
       <div className="postSummary">
@@ -112,23 +114,21 @@ class PostSummary extends Component {
               </div>
               <div className="card-footer col-md-12">
                 <button className="btn p-0" onClick={this.handleClick}>
-                  {!isLiked && (
+                  {!this.state.isLiked && (
                     <i
                       id="like"
                       data-userid={auth.uid}
                       data-postid={post.id}
                       data-like={post.likeCount}
-                      data-isliked={true}
                       className="far fa-heart p-0 mr-1"
                     ></i>
                   )}
-                  {isLiked && (
+                  {this.state.isLiked && (
                     <i
                       id="unlike"
                       data-userid={auth}
                       data-postid={post.id}
                       data-like={post.likeCount}
-                      data-isliked={false}
                       className="fas fa-heart p-0 mr-1"
                     ></i>
                   )}

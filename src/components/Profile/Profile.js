@@ -27,11 +27,15 @@ export default class Profile extends Component {
         <div className="text-center card-content profile-short-info ">
           <div className="row">
             <div className="col s5">
-              <h6>Following</h6>
+              <div>
+                <h6>Following</h6>
+              </div>
               <p>4</p>
             </div>
             <div className="col s5">
-              <h6>Followers</h6>
+              <div>
+                <h6>Followers</h6>
+              </div>
               <p>40</p>
             </div>
           </div>

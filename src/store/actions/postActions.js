@@ -69,7 +69,7 @@ export const unlikePost = (post) => {
 
     console.log("postAction-postId", post.postId);
     firestore
-      .collection("Posts")
+      .collection("likes")
       .doc(post.postId)
       .update({
         likeCount: post.likeCount,

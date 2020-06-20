@@ -11,6 +11,14 @@ body, html {
   -moz-osx-font-smoothing: grayscale;
 } */
 
+.newPostAttachment ul {
+  width: 100%;
+}
+
+.newPostAttachment ul li {
+  display: inline-block;
+}
+
 .card {
   border-color: #e44d3a;
 }
@@ -37,9 +45,9 @@ body, html {
   margin-left: 10px;
 }
 
-.bg-tabcontent {
+/* .bg-tabContent {
   background-color: #ff5722;
-}
+} */
 
 .profile-short-info {
   padding-top: 20px;
@@ -424,6 +432,10 @@ i {
   display: block
 }
 
+.nav .nav-pills {
+  background-color: #1e71a2;
+}
+
 .message-page {
   float: left;
   position: relative;
@@ -469,9 +481,9 @@ i {
   background-color: #1e71a2;
 }
 
-.bg-top-profile {
+/* .bg-top-profile {
   background-color: #ff9675;
-}
+} */
 
 .profile {
   position: relative;

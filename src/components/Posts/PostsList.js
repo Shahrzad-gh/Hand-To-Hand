@@ -17,7 +17,7 @@ export default function PostsList({ posts, auth, likes }) {
                 auth={user}
                 post={post}
                 key={post.id}
-                mylikes={likes.map((item) => item.postId === post.id)}
+                isThisPostlike={console.log(likes.includes(post.id))}
               />
             )
         )}
