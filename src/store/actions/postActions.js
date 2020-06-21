@@ -2,9 +2,12 @@ export const createPost = (post) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     //make async call to database
     const firestore = getFirestore();
-    console.log("post-firestore", firestore);
+    const firebase = getFirebase();
+    console.log("post", post);
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
+    console.log("imgName", post.imgFile.name);
+
     firestore
       .collection("Posts")
       .add({
@@ -13,6 +16,7 @@ export const createPost = (post) => {
         authorLastName: profile.lastName,
         authorId: authorId,
         likeCount: 0,
+        imgFile: post.url,
         commentCount: 0,
         viewCount: 0,
         createAt: new Date(),
@@ -180,5 +184,28 @@ export const deleteComment = (comment) => {
       .catch((err) => {
         dispatch({ type: "COMMENT_COUNT_DEC_ERROR", err });
       });
+  };
+};
+
+export const uploadImage = (imageFile) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    console.log("upload Action:", imageFile);
+    const firebase = getFirebase();
+    const storageRef = firebase.storage().ref("Photos/" + imageFile.name);
+    var task = storageRef.put(imageFile);
+    console.log("task-action", task);
+    task.on(
+      "state change",
+      function progress(snapshot) {
+        var percentage = (snapshot.byteTransferred / snapshot.totalBytes) * 100;
+        console.log("Percentage:", percentage);
+      },
+      function error(err) {
+        console.log("upload err", err);
+      },
+      function complete() {
+        console.log("upload Finish");
+      }
+    );
   };
 };

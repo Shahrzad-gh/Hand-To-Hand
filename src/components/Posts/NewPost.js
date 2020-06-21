@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createPost } from "../../store/actions/postActions";
+import { createPost, uploadImage } from "../../store/actions/postActions";
 import { Redirect } from "react-router-dom";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
+import firebase from "firebase/app";
 class NewPost extends Component {
   state = {
     content: "",
     showPicker: false,
     emoji: "",
+    imgFile: "",
+    url: "",
   };
   togglePicker = () => {
     this.setState({
@@ -29,6 +32,17 @@ class NewPost extends Component {
     console.log("ADD_POST", e);
     e.preventDefault();
     this.props.createPost(this.state);
+    this.props.uploadImage(this.state.imgFile);
+  };
+  handleUploadImage = (e) => {
+    console.log("img", e.target.files[0]);
+    this.setState(
+      {
+        url: URL.createObjectURL(e.target.files[0]),
+        imgFile: e.target.files[0],
+      },
+      console.log("imgObjectURL", this.state.url)
+    );
   };
   render() {
     const { auth } = this.props;
@@ -50,10 +64,19 @@ class NewPost extends Component {
                     <button className="btn right">
                       <i className="fas fa-share"></i>
                     </button>
-                    <ul className="newPostAttachment">
-                      <li>
+                    <div>
+                      <img
+                        id="img-post"
+                        src={this.state.url}
+                        alt=""
+                        width="300"
+                        height="200"
+                      />
+                    </div>
+                    <div className="row mb-0">
+                      <div className="add-emoji">
                         <i
-                          className="fa fa-smile-o"
+                          className="fa fa-smile-o mr-2"
                           onClick={this.togglePicker}
                         ></i>
                         {this.state.showPicker && (
@@ -63,16 +86,19 @@ class NewPost extends Component {
                             onSelect={this.handleEmojiSelect}
                           />
                         )}
-                      </li>
-                      <li>
-                        <div>
-                          <input type="file" id="pic" accept="image/*" />
-                          <label className="camera-icon" htmlFor="pic">
-                            <i className="fas fa-camera fa-xs"></i>
-                          </label>
-                        </div>
-                      </li>
-                    </ul>
+                      </div>
+                      <div className="change-pic">
+                        <input
+                          type="file"
+                          id="pic"
+                          accept="image/*"
+                          onChange={this.handleUploadImage}
+                        />
+                        <label className="camera-icon" htmlFor="pic">
+                          <i className="fas fa-camera fa-xs mr-2"></i>
+                        </label>
+                      </div>
+                    </div>
                   </div>
                 </form>
               </div>
@@ -91,6 +117,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     createPost: (post) => dispatch(createPost(post)),
+    uploadImage: (image) => dispatch(uploadImage(image)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(NewPost);

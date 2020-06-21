@@ -105,7 +105,20 @@ class PostSummary extends Component {
                 </div>
               </div>
               <div className="card-content">
-                <span>{post.content}</span>
+                {post.imgFile ? (
+                  <div className="img-post-content mb-3">
+                    <img
+                      id="post-imgage"
+                      src={post.url}
+                      width="475"
+                      height="200"
+                    />
+                  </div>
+                ) : null}
+
+                <div className="post-content">
+                  <span>{post.content}</span>
+                </div>
               </div>
               <div>
                 <span className="ml-2">
