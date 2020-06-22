@@ -2,12 +2,23 @@ export const createPost = (post) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     //make async call to database
     const firestore = getFirestore();
-    const firebase = getFirebase();
-    console.log("post", post);
+    console.log("creat-postAction:post", post);
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
-    console.log("imgName", post.imgFile.name);
-
+    console.log("imgName", post.url.name);
+    const firebase = getFirebase();
+    const mainURL = firebase
+      .storage()
+      .ref("Photos")
+      .child(post.imgFile.name)
+      .getDownloadURL()
+      .then((url) => {
+        post.url = url;
+        console.log("URL-post", url);
+        return url;
+      })
+      .catch((err) => console.log("dl", err));
+    console.log("url*", post.imgFile);
     firestore
       .collection("Posts")
       .add({
@@ -17,6 +28,7 @@ export const createPost = (post) => {
         authorId: authorId,
         likeCount: 0,
         imgFile: post.url,
+        url: post.url,
         commentCount: 0,
         viewCount: 0,
         createAt: new Date(),
@@ -187,25 +199,32 @@ export const deleteComment = (comment) => {
   };
 };
 
-export const uploadImage = (imageFile) => {
+export const uploadImage = (imgFile) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
-    console.log("upload Action:", imageFile);
+    console.log("upload Action:", imgFile);
     const firebase = getFirebase();
-    const storageRef = firebase.storage().ref("Photos/" + imageFile.name);
-    var task = storageRef.put(imageFile);
+    const storageRef = firebase.storage().ref("Photos/" + imgFile.name);
+    var task = storageRef
+      .put(imgFile)
+      .then(() => {
+        dispatch({ type: "UPLOAD_IMG_SUCCESS" });
+      })
+      .catch((err) => {
+        dispatch({ type: "UPLOAD_IMG_ERROR", err });
+      });
     console.log("task-action", task);
-    task.on(
-      "state change",
-      function progress(snapshot) {
-        var percentage = (snapshot.byteTransferred / snapshot.totalBytes) * 100;
-        console.log("Percentage:", percentage);
-      },
-      function error(err) {
-        console.log("upload err", err);
-      },
-      function complete() {
-        console.log("upload Finish");
-      }
-    );
+    // task.on(
+    //   "state change",
+    //   function progress(snapshot) {
+    //     var percentage = (snapshot.byteTransferred / snapshot.totalBytes) * 100;
+    //     console.log("Percentage:", percentage);
+    //   },
+    //   function error(err) {
+    //     console.log("upload err", err);
+    //   },
+    //   function complete() {
+    //     console.log("upload Finish");
+    //   }
+    // );
   };
 };

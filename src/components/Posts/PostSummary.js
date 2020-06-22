@@ -10,6 +10,7 @@ import {
 } from "../../store/actions/postActions";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import { getFirebase } from "react-redux-firebase";
 
 class PostSummary extends Component {
   state = {
@@ -69,10 +70,11 @@ class PostSummary extends Component {
     const { auth } = this.props;
     console.log("Is userID", auth.uid);
     console.log("Likes this postID", post.id);
-    console.log(":", isThisPostLike);
+    console.log("post URL", post.imgFile);
     //console.log("LLLIIIKKKKEEE", mylikes.postId == post.id);
     const isLiked = false; //mylikes && mylikes.includes(null);
-
+    //const firebase = getFirebase();
+    //
     return (
       <div className="postSummary">
         <div className="card col-md-12 p-0">
@@ -109,9 +111,9 @@ class PostSummary extends Component {
                   <div className="img-post-content mb-3">
                     <img
                       id="post-imgage"
-                      src={post.url}
-                      width="475"
-                      height="200"
+                      src={post.imgFile}
+                      width="100vw"
+                      height="auto"
                     />
                   </div>
                 ) : null}

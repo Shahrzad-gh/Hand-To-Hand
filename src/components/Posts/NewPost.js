@@ -12,7 +12,9 @@ class NewPost extends Component {
     emoji: "",
     imgFile: "",
     url: "",
+    file: [],
   };
+
   togglePicker = () => {
     this.setState({
       showPicker: !this.state.showPicker,
@@ -31,17 +33,18 @@ class NewPost extends Component {
   handleSubmit = (e) => {
     console.log("ADD_POST", e);
     e.preventDefault();
-    this.props.createPost(this.state);
+    //
     this.props.uploadImage(this.state.imgFile);
+    this.props.createPost(this.state);
   };
   handleUploadImage = (e) => {
-    console.log("img", e.target.files[0]);
+    console.log("img", URL.createObjectURL(e.target.files[0]));
     this.setState(
       {
         url: URL.createObjectURL(e.target.files[0]),
         imgFile: e.target.files[0],
       },
-      console.log("imgObjectURL", this.state.url)
+      console.log("url & imgFile", this.state)
     );
   };
   render() {

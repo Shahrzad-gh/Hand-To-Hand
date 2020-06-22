@@ -67,6 +67,12 @@ const postReducer = (state = initialState, action) => {
     case "COMMENT_DEC_ERROR":
       console.log("comment dec error", action.err);
       return state;
+    case "UPLOAD_IMG_SUCCESS":
+      console.log("upload img success");
+      return state;
+    case "UPLOAD_IMG_ERROR":
+      console.log("upload img error", action.err);
+      return state;
     default:
       return state;
   }
