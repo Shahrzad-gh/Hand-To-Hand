@@ -63,17 +63,14 @@ class PostSummary extends Component {
     this.props.deletePost(e.target.dataset.postid);
   };
   render() {
-    const { post, likesId, isThisPostLike } = this.props;
-    console.log("PROPS", this.props);
+    const { post } = this.props;
+    console.log("summary", post);
 
     console.log("postID-summary", post.authorId);
     const { auth } = this.props;
     console.log("Is userID", auth.uid);
-    console.log("Likes this postID", post.id);
-    console.log("post URL", post.imgFile);
-    //console.log("LLLIIIKKKKEEE", mylikes.postId == post.id);
-    const isLiked = false; //mylikes && mylikes.includes(null);
-    //const firebase = getFirebase();
+    console.log("post URL", post);
+
     //
     return (
       <div className="postSummary">

@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import Navbar from "../Navbar/Navbar";
 import Profile from "../Profile/Profile";
 import NotificationsList from "../Notifications/NotificationsList";
 import Suggestion from "../Dashboard/Suggestion";
 import MyProfileLinks from "./MyProfileLinks";
 import { Link } from "react-router-dom";
+
 export default function MyProfile(props) {
   console.log("MYPROF", props);
   const notifications = props.location.props.state.notifications;

@@ -11,11 +11,12 @@ class MyProfileLinks extends Component {
   render() {
     const { auth, posts, user } = this.props;
     const uid = auth.uid;
-    console.log("MPLPPP", posts);
+    console.log("allPosts", posts);
+    console.log("user-online", uid);
     const myposts = posts
       ? posts.filter((post) => post.authorId === uid)
       : null;
-
+    console.log("myPosts", myposts);
     return (
       <div>
         <div className="container m-2">

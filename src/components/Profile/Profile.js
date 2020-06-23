@@ -1,28 +1,35 @@
 import React, { Component } from "react";
-export default class Profile extends Component {
+import { uploadImage } from "../../store/actions/postActions";
+import { updateImageProfile } from "../../store/actions/userAction";
+import { connect } from "react-redux";
+import { getFirebase } from "react-redux-firebase";
+
+class Profile extends Component {
   state = {
     imgFile: "",
     url: "",
   };
   handleUploadProfilePic = (e) => {
-    console.log("img", e.target.files[0]);
+    console.log("img", URL.createObjectURL(e.target.files[0]));
     this.setState(
       {
         url: URL.createObjectURL(e.target.files[0]),
         imgFile: e.target.files[0],
-      },
-      console.log("imgObjectURL", this.state.url)
+      }
+
+      //this.props.updateImageProfile(this.state)
     );
+    console.log("imgObjectURL", this.state);
   };
   render() {
-    const { imageURL } = this.props;
     return (
       <div className="card text-center m-0">
         <div className="profile card-img  bg-light">
           <img
+            id="fileUpload"
             width="120"
             height="120"
-            src={imageURL}
+            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
             alt=""
             className="profile-pic rounded-circle border border-dark"
           />
@@ -61,3 +68,10 @@ export default class Profile extends Component {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    uploadImage: (image) => dispatch(uploadImage(image)),
+    updateImageProfile: (image) => dispatch(updateImageProfile(image)),
+  };
+};
+export default connect(null, mapDispatchToProps)(Profile);

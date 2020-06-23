@@ -5,19 +5,20 @@ export const createPost = (post) => {
     console.log("creat-postAction:post", post);
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
-    console.log("imgName", post.url.name);
+    //console.log("imgName", post.url.name);
     const firebase = getFirebase();
-    const mainURL = firebase
-      .storage()
-      .ref("Photos")
-      .child(post.imgFile.name)
-      .getDownloadURL()
-      .then((url) => {
-        post.url = url;
-        console.log("URL-post", url);
-        return url;
-      })
-      .catch((err) => console.log("dl", err));
+    const mainURL = firebase.storage();
+    post.imgFile &&
+      mainURL
+        .ref("Photos")
+        .child(post.imgFile.name)
+        .getDownloadURL()
+        .then((url) => {
+          post.url = url;
+          console.log("URL-post", url);
+          return url;
+        })
+        .catch((err) => console.log("dl", err));
     console.log("url*", post.imgFile);
     firestore
       .collection("Posts")
@@ -202,8 +203,11 @@ export const deleteComment = (comment) => {
 export const uploadImage = (imgFile) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     console.log("upload Action:", imgFile);
+    const authorId = getState().firebase.auth.uid;
+    console.log(":upload-userID", authorId);
     const firebase = getFirebase();
-    const storageRef = firebase.storage().ref("Photos/" + imgFile.name);
+    const storageRef = firebase.storage().ref("Photos" + imgFile.name);
+
     var task = storageRef
       .put(imgFile)
       .then(() => {

@@ -10,7 +10,7 @@ class NewPost extends Component {
     content: "",
     showPicker: false,
     emoji: "",
-    imgFile: "",
+    imgFile: null,
     url: "",
     file: [],
   };
@@ -21,9 +21,11 @@ class NewPost extends Component {
     });
   };
   handleEmojiSelect = (Emoji) => {
-    console.log(Emoji.native);
+    console.log(this.state.content + Emoji.native);
     this.togglePicker();
+
     this.setState({ content: this.state.content + Emoji.native });
+    //document.getElementById("content").value = this.state.content;
   };
   handleChange = (e) => {
     this.setState({
@@ -33,8 +35,7 @@ class NewPost extends Component {
   handleSubmit = (e) => {
     console.log("ADD_POST", e);
     e.preventDefault();
-    //
-    this.props.uploadImage(this.state.imgFile);
+    this.state.imgFile && this.props.uploadImage(this.state.imgFile);
     this.props.createPost(this.state);
   };
   handleUploadImage = (e) => {
@@ -60,6 +61,7 @@ class NewPost extends Component {
                   <div className="input-field">
                     <textarea
                       id="content"
+                      value={this.state.content}
                       placeholder="share a post"
                       className="materialize-textarea"
                       onChange={this.handleChange}
