@@ -53,13 +53,14 @@ export const likePost = (post) => {
     console.log("postAction-post", post);
     const arrayUnion = firebase.firestore.FieldValue.arrayUnion;
     const posts = getState().firestore.data.Posts;
-    const likeCount = posts[post.postId].likeCount;
+    console.log("postAction-post", posts);
+    const likeCounts = posts[post.postId].likeCount;
     firestore
       .collection("Posts")
       .doc(post.postId)
       .update({
         whoLikes: arrayUnion(post.userId),
-        likeCount: likeCount + 1,
+        likeCount: likeCounts + 1,
       })
       .then(() => {
         dispatch({ type: "LIKE_POST_SUCCESS", post });
@@ -78,14 +79,14 @@ export const unlikePost = (post) => {
     console.log("postAction-post", post);
     const arrayRemove = firebase.firestore.FieldValue.arrayRemove;
     const posts = getState().firestore.data.Posts;
-    const likeCount = posts[post.postId].likeCount;
-    console.log("DEL", post);
+    const likeCounts = posts[post.postId].likeCount;
+    console.log("postUNLIKe", post);
     firestore
       .collection("Posts")
       .doc(post.postId)
       .update({
         whoLikes: arrayRemove(post.userId),
-        likeCount: likeCount - 1,
+        likeCount: likeCounts - 1,
       })
       .then(() => {
         dispatch({ type: "UNLIKE_POST_SUCCESS", post });

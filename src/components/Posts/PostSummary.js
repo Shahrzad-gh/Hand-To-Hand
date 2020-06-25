@@ -8,31 +8,19 @@ import {
   unlikePost,
   deletePost,
 } from "../../store/actions/postActions";
-import { firestoreConnect } from "react-redux-firebase";
-import { compose } from "redux";
-import { getFirebase } from "react-redux-firebase";
 
 class PostSummary extends Component {
   state = {
     userId: "",
     postId: "",
-    likeCount: 0,
-    isLiked: false,
   };
   handleClick = (e) => {
     console.log("CLICK", e.target.dataset);
-    const count = Number(e.target.dataset.like);
-    console.log("Am I liked this Post:", e.target.dataset.isliked);
-    console.log("likeCount", Number(e.target.dataset.like));
-    let newCount = 0;
     if (e.target.id === "like") {
-      newCount = count + 1;
       this.setState(
         {
           userId: e.target.dataset.userid,
           postId: e.target.dataset.postid,
-          likeCount: newCount,
-          //isLiked: !this.state.isLiked,
         },
         function () {
           console.log("state-likePost", this.state);
@@ -40,13 +28,10 @@ class PostSummary extends Component {
         }
       );
     } else {
-      newCount = count - 1;
       this.setState(
         {
           userId: e.target.dataset.userid,
           postId: e.target.dataset.postid,
-          likeCount: newCount,
-          //isLiked: !this.state.isLiked,
         },
         function () {
           console.log("state-unlikePost", this.state);
@@ -54,8 +39,6 @@ class PostSummary extends Component {
         }
       );
     }
-
-    //console.log("PSSS", this.state);
   };
 
   handleDelete = (e) => {
@@ -130,7 +113,6 @@ class PostSummary extends Component {
                       id="like"
                       data-userid={auth.uid}
                       data-postid={post.id}
-                      data-like={post.likeCount}
                       className="far fa-heart p-0 mr-1"
                     ></i>
                   )}
@@ -139,7 +121,6 @@ class PostSummary extends Component {
                       id="unlike"
                       data-userid={auth.uid}
                       data-postid={post.id}
-                      data-like={post.likeCount}
                       className="fas fa-heart p-0 mr-1"
                     ></i>
                   )}

@@ -8,30 +8,55 @@ import { Component } from "react";
 import AddComment from "../Comments/AddComment";
 import CommentList from "../Comments/CommentsList";
 import Navbar from "../Navbar/Navbar";
-
+import {
+  likePost,
+  unlikePost,
+  deletePost,
+} from "../../store/actions/postActions";
 class PostDetails extends Component {
   state = {
-    likeCount: 0,
+    userId: "",
+    postId: "",
   };
-  handleLike = (e) => {
-    let newCount = this.state.likeCount + 1;
-    console.log("Like count", newCount);
-    this.setState({
-      likeCount: newCount,
-    });
+  handleClick = (e) => {
+    console.log("CLICK", e.target.dataset);
+    if (e.target.id === "like") {
+      this.setState(
+        {
+          userId: e.target.dataset.userid,
+          postId: e.target.dataset.postid,
+        },
+        function () {
+          console.log("state-likePost", this.state);
+          this.props.likePost(this.state);
+        }
+      );
+    } else {
+      this.setState(
+        {
+          userId: e.target.dataset.userid,
+          postId: e.target.dataset.postid,
+        },
+        function () {
+          console.log("state-unlikePost", this.state);
+          this.props.unlikePost(this.state);
+        }
+      );
+    }
   };
   render() {
     const { post, auth, comments, profile } = this.props;
+    console.log("?", this.props);
+    console.log("??", auth.uid);
     const postId = this.props.match.params.id;
-    console.log("comments- details", comments);
+    console.log("pID", postId);
     const thisPostComments = comments
       ? Object.entries(comments).filter(
           ([key, comment]) => comment && comment.postId === postId
         )
       : null;
-    console.log("DETAILS**", profile);
-    console.log("DETAILS*", thisPostComments);
-    console.log("DETAILS***", comments);
+    const isLike = post.whoLikes && post.whoLikes.includes(auth.uid);
+
     if (!auth.uid) return <Redirect to="/Login" />;
     if (post) {
       return (
@@ -64,8 +89,23 @@ class PostDetails extends Component {
                   </span>
                 </div>
                 <div className="card-footer">
-                  <button className="btn">
-                    <i class="far fa-heart mr-1" onClick={this.handleLike}></i>
+                  <button className="btn p-0" onClick={this.handleClick}>
+                    {!isLike && (
+                      <i
+                        id="like"
+                        data-userid={auth.uid}
+                        data-postid={postId}
+                        className="far fa-heart p-0 mr-1"
+                      ></i>
+                    )}
+                    {isLike && (
+                      <i
+                        id="unlike"
+                        data-userid={auth.uid}
+                        data-postid={postId}
+                        className="fas fa-heart p-0 mr-1"
+                      ></i>
+                    )}
                   </button>
                   <span>{post.likeCount}</span>
                   <i class="far fa-comment-alt mr-1 ml-2"></i>
@@ -104,11 +144,10 @@ const mapStateToProps = (state, ownProps) => {
     likes: alllikes,
   };
 };
-export default compose(
-  connect(mapStateToProps),
-  firestoreConnect([
-    { collection: "Posts" },
-    { collection: "likes" },
-    { collection: "comments", orderBy: ["createAt", "desc"] },
-  ])
-)(PostDetails);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    likePost: (post) => dispatch(likePost(post)),
+    unlikePost: (post) => dispatch(unlikePost(post)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(PostDetails);
