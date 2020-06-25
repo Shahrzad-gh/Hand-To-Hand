@@ -8,11 +8,7 @@ import { Component } from "react";
 import AddComment from "../Comments/AddComment";
 import CommentList from "../Comments/CommentsList";
 import Navbar from "../Navbar/Navbar";
-import {
-  likePost,
-  unlikePost,
-  deletePost,
-} from "../../store/actions/postActions";
+import { likePost, unlikePost } from "../../store/actions/postActions";
 class PostDetails extends Component {
   state = {
     userId: "",
@@ -133,7 +129,7 @@ const mapStateToProps = (state, ownProps) => {
   const allComments = state.firestore.data.comments;
   const post = posts ? posts[id] : null;
   const alllikes = state.firestore.data.likes;
-  console.log("**", state.firebase.auth);
+  console.log("**", state.firestore.data);
   return {
     id: id,
     post: post,
@@ -150,4 +146,7 @@ const mapDispatchToProps = (dispatch) => {
     unlikePost: (post) => dispatch(unlikePost(post)),
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(PostDetails);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  firestoreConnect([{ collection: "comments" }])
+)(PostDetails);
