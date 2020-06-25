@@ -4,11 +4,12 @@ import Profile from "../Profile/Profile";
 import NotificationsList from "../Notifications/NotificationsList";
 import Suggestion from "../Dashboard/Suggestion";
 import UserProfileLink from "./UserProfileLink";
+import { auth } from "firebase";
 export default function UserProfile(props) {
   const notifications = props.location.props.notifications;
   const user = props.location.props.user;
   const suggestions = props.location.props.suggestions;
-
+  const auth = props.location.props.auth;
   return (
     <div>
       <Navbar />
@@ -23,7 +24,7 @@ export default function UserProfile(props) {
         <div className="row col-md-12">
           <div className="col-md-3">
             <div className="col">
-              <Profile />
+              <Profile auth={auth.photoURL} user={user} />
               <Suggestion
                 suggestions={suggestions}
                 notifications={notifications}

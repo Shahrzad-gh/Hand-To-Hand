@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 export default function MyProfile(props) {
   console.log("MYPROF", props);
+  const auth = props.location.props.state.auth;
   const notifications = props.location.props.state.notifications;
   const userSuggestions = props.location.props.state.suggestions;
   const user = props.location.props.state.profile;
@@ -26,7 +27,7 @@ export default function MyProfile(props) {
         <div className="row col-md-12">
           <div className="col-md-3">
             <div className="col">
-              <Profile />
+              <Profile photoURL={auth.photoURL} />
               <Suggestion
                 suggestions={userSuggestions}
                 notifications={notifications}

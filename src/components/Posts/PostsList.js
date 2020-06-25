@@ -1,7 +1,7 @@
 import React from "react";
 import PostSummary from "./PostSummary";
 
-export default function PostsList({ posts, auth, likes }) {
+export default function PostsList({ posts, auth }) {
   const user = auth;
   console.log("POSTLIST-myPosts", posts);
   console.log("POSTLIST-Auth", auth);

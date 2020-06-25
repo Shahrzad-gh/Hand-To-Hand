@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import UserProfileLink from "../Profile/UserProfileLink";
+import { auth } from "firebase";
 export default function Suggestion(props) {
   const { suggestions } = props;
   const { notifications } = props;
@@ -36,6 +37,7 @@ export default function Suggestion(props) {
                           to={{
                             pathname: "/user/" + user.id,
                             props: {
+                              auth: auth,
                               user: user,
                               notifications: notifications,
                               suggestions: suggestions,

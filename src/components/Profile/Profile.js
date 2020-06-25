@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { uploadImage } from "../../store/actions/postActions";
 import { updateImageProfile } from "../../store/actions/userAction";
 import { connect } from "react-redux";
-import { getFirebase } from "react-redux-firebase";
 
 class Profile extends Component {
   state = {
@@ -15,13 +14,15 @@ class Profile extends Component {
       {
         url: URL.createObjectURL(e.target.files[0]),
         imgFile: e.target.files[0],
-      }
-
-      //this.props.updateImageProfile(this.state)
+      },
+      console.log("url & imgFile", this.state)
     );
-    console.log("imgObjectURL", this.state);
+    this.props.updateImageProfile(e.target.files[0]);
   };
+
   render() {
+    console.log("Props", this.props);
+    const { photoURL } = this.props;
     return (
       <div className="card text-center m-0">
         <div className="profile card-img  bg-light">
@@ -29,7 +30,7 @@ class Profile extends Component {
             id="fileUpload"
             width="120"
             height="120"
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+            src={photoURL}
             alt=""
             className="profile-pic rounded-circle border border-dark"
           />
@@ -62,7 +63,9 @@ class Profile extends Component {
               <p>40</p>
             </div>
           </div>
-          <button className="btn">Follow</button>
+          <button className="btn" hidden={true}>
+            Follow
+          </button>
         </div>
       </div>
     );

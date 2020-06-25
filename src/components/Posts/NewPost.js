@@ -4,7 +4,6 @@ import { createPost, uploadImage } from "../../store/actions/postActions";
 import { Redirect } from "react-router-dom";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
-import firebase from "firebase/app";
 class NewPost extends Component {
   state = {
     content: "",
@@ -33,7 +32,7 @@ class NewPost extends Component {
     });
   };
   handleSubmit = (e) => {
-    console.log("ADD_POST", e);
+    console.log("ADD_POST", this.state);
     e.preventDefault();
     this.state.imgFile && this.props.uploadImage(this.state.imgFile);
     this.props.createPost(this.state);
@@ -121,8 +120,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    createPost: (post) => dispatch(createPost(post)),
     uploadImage: (image) => dispatch(uploadImage(image)),
+    createPost: (post) => dispatch(createPost(post)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(NewPost);

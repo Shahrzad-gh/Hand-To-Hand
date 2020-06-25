@@ -13,13 +13,9 @@ import { compose } from "redux";
 
 class Dashboard extends Component {
   render() {
-    const { posts, auth, profile, notifications, users, likes } = this.props;
+    const { posts, auth, profile, notifications, users } = this.props;
     if (!auth.uid) return <Redirect to="/Login" />;
-    const myLikes =
-      likes && Object.values(likes).filter((item) => item.userId == auth.uid);
-    console.log("dashboard-OnlineUser", auth.uid);
-    console.log("dashboard-allikes", likes);
-    console.log("dashboard-MyLikes", myLikes);
+
     return (
       <div>
         <Navbar />
@@ -28,22 +24,27 @@ class Dashboard extends Component {
             <div className="col-md-3">
               <div className="col">
                 <ProfileThumbnail
+                  auth={auth}
                   profile={profile}
                   notifications={notifications}
                   suggestions={users}
                 />
-                <Suggestion suggestions={users} notifications={notifications} />
+                <Suggestion
+                  suggestions={users}
+                  notifications={notifications}
+                  auth={auth}
+                />
               </div>
             </div>
             <div className="col-md-6">
               <div className="col p-0">
                 <NewPost />
-                <PostsList posts={posts} auth={auth} likes={myLikes} />
+                <PostsList posts={posts} auth={auth} />
               </div>
             </div>
             <div className="col-md-3">
               <Login />
-              <NotificationsList notifications={notifications} />
+              <NotificationsList notifications={notifications} auth={auth} />
             </div>
           </div>
         </div>
@@ -59,13 +60,11 @@ const mapStateToProps = (state) => {
     auth: state.firebase.auth,
     notifications: state.firestore.ordered.notifications,
     users: state.firestore.ordered.users,
-    likes: state.firestore.ordered.likes,
   };
 };
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: "likes" },
     { collection: "Posts", orderBy: ["createAt", "desc"] },
     { collection: "notifications", limit: 3, orderBy: ["time", "desc"] },
     { collection: "users", limit: 5 },

@@ -9,13 +9,14 @@ import { compose } from "redux";
 
 class MyProfileLinks extends Component {
   render() {
-    const { auth, posts, user } = this.props;
+    const { auth, posts, user, mylikes } = this.props;
     const uid = auth.uid;
     console.log("allPosts", posts);
     console.log("user-online", uid);
     const myposts = posts
       ? posts.filter((post) => post.authorId === uid)
       : null;
+
     console.log("myPosts", myposts);
     return (
       <div>
@@ -41,9 +42,11 @@ class MyProfileLinks extends Component {
               <Info />
             </div>
             <div label="Posts" className="tab-content">
-              <PostsList posts={myposts} auth={auth.uid} />
+              <PostsList posts={myposts} auth={auth} />
             </div>
-            <div label="Likes" className="tab-content"></div>
+            <div label="Likes" className="tab-content">
+              <PostsList posts={posts} auth={auth} />
+            </div>
             <div label="Mention" className="tab-content"></div>
           </TabList>
         </div>

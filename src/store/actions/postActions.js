@@ -7,19 +7,20 @@ export const createPost = (post) => {
     const authorId = getState().firebase.auth.uid;
     //console.log("imgName", post.url.name);
     const firebase = getFirebase();
-    const mainURL = firebase.storage();
     post.imgFile &&
-      mainURL
-        .ref("Photos")
+      firebase
+        .storage()
+        .ref("Photos/")
         .child(post.imgFile.name)
         .getDownloadURL()
         .then((url) => {
           post.url = url;
-          console.log("URL-post", url);
-          return url;
+          console.log("URL", url);
         })
         .catch((err) => console.log("dl", err));
-    console.log("url*", post.imgFile);
+    console.log("url", post.url);
+    console.log("url-imgfile", post.imgFile.url);
+
     firestore
       .collection("Posts")
       .add({
@@ -48,12 +49,17 @@ export const likePost = (post) => {
     //make async call to database
     console.log("Action", post);
     const firestore = getFirestore();
+    const firebase = getFirebase();
     console.log("postAction-post", post);
+    const arrayUnion = firebase.firestore.FieldValue.arrayUnion;
+    const posts = getState().firestore.data.Posts;
+    const likeCount = posts[post.postId].likeCount;
     firestore
-      .collection("likes")
-      .add({
-        postId: post.postId,
-        userId: post.userId,
+      .collection("Posts")
+      .doc(post.postId)
+      .update({
+        whoLikes: arrayUnion(post.userId),
+        likeCount: likeCount + 1,
       })
       .then(() => {
         dispatch({ type: "LIKE_POST_SUCCESS", post });
@@ -61,57 +67,31 @@ export const likePost = (post) => {
       .catch((err) => {
         dispatch({ type: "LIKE_POST_ERROR", err });
       });
-    const posts = getState().firestore.data.Posts;
-    const likeCount = posts[post.postId].likeCount;
-    firestore
-      .collection("Posts")
-      .doc(post.postId)
-      .update({
-        likeCount: likeCount + 1,
-      })
-      .then(() => {
-        dispatch({ type: "LIKE_POST_INC_SUCCESS", post });
-      })
-      .catch((err) => {
-        dispatch({ type: "LIKE_POST_INC_ERROR", err });
-      });
   };
 };
 
 export const unlikePost = (post) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     //make async call to database
-    console.log("Action", post);
     const firestore = getFirestore();
-
-    console.log("postAction-postId", post.postId);
+    const firebase = getFirebase();
+    console.log("postAction-post", post);
+    const arrayRemove = firebase.firestore.FieldValue.arrayRemove;
+    const posts = getState().firestore.data.Posts;
+    const likeCount = posts[post.postId].likeCount;
+    console.log("DEL", post);
     firestore
-      .collection("likes")
+      .collection("Posts")
       .doc(post.postId)
       .update({
-        likeCount: post.likeCount,
-        userId: post.userId,
+        whoLikes: arrayRemove(post.userId),
+        likeCount: likeCount - 1,
       })
       .then(() => {
         dispatch({ type: "UNLIKE_POST_SUCCESS", post });
       })
       .catch((err) => {
         dispatch({ type: "UNLIKE_POST_ERROR", err });
-      });
-
-    const posts = getState().firestore.data.Posts;
-    const likeCount = posts[post.postId].likeCount;
-    firestore
-      .collection("Posts")
-      .doc(post.postId)
-      .update({
-        likeCount: likeCount - 1,
-      })
-      .then(() => {
-        dispatch({ type: "UNLIKE_POST_DEC_SUCCESS", post });
-      })
-      .catch((err) => {
-        dispatch({ type: "UNLIKE_POST_DEC_ERROR", err });
       });
   };
 };
@@ -204,31 +184,62 @@ export const uploadImage = (imgFile) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     console.log("upload Action:", imgFile);
     const authorId = getState().firebase.auth.uid;
-    console.log(":upload-userID", authorId);
+    console.log("upload-userID", authorId);
     const firebase = getFirebase();
-    const storageRef = firebase.storage().ref("Photos" + imgFile.name);
+    const storageRef = firebase.storage().ref("Photos/" + imgFile.name);
 
-    var task = storageRef
-      .put(imgFile)
-      .then(() => {
-        dispatch({ type: "UPLOAD_IMG_SUCCESS" });
-      })
-      .catch((err) => {
-        dispatch({ type: "UPLOAD_IMG_ERROR", err });
-      });
-    console.log("task-action", task);
-    // task.on(
-    //   "state change",
-    //   function progress(snapshot) {
-    //     var percentage = (snapshot.byteTransferred / snapshot.totalBytes) * 100;
-    //     console.log("Percentage:", percentage);
-    //   },
-    //   function error(err) {
-    //     console.log("upload err", err);
-    //   },
-    //   function complete() {
-    //     console.log("upload Finish");
-    //   }
-    // );
+    var task = storageRef.put(imgFile);
+    //   .then(() => {
+    //     dispatch({ type: "UPLOAD_IMG_SUCCESS" });
+    //   })
+    //   .catch((err) => {
+    //     dispatch({ type: "UPLOAD_IMG_ERROR", err });
+    //   });
+    // console.log("task-action", task);
+
+    task.on(
+      firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+      function (snapshot) {
+        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        switch (snapshot.state) {
+          case firebase.storage.TaskState.PAUSED: // or 'paused'
+            console.log("Upload is paused");
+            break;
+          case firebase.storage.TaskState.RUNNING: // or 'running'
+            console.log("Upload is running");
+            break;
+          default:
+            console.log("Upload **");
+        }
+      },
+      function (error) {
+        // A full list of error codes is available at
+        // https://firebase.google.com/docs/storage/web/handle-errors
+        switch (error.code) {
+          case "storage/unauthorized":
+            // User doesn't have permission to access the object
+            console.log("User doesn't have permission to access the object");
+            break;
+          case "storage/canceled":
+            // User canceled the upload
+            console.log("User canceled the upload");
+            break;
+          case "storage/unknown":
+            // Unknown error occurred, inspect error.serverResponse
+            console.log("Unknown error occurred, inspect error.serverResponse");
+            break;
+          default:
+            console.log("UNKNOWN ERROR");
+        }
+      },
+      function () {
+        // Upload completed successfully, now we can get the download URL
+        task.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+          console.log("File available at", downloadURL);
+        });
+      }
+    );
   };
 };
