@@ -15,7 +15,7 @@ class PostDetails extends Component {
     postId: "",
   };
   handleClick = (e) => {
-    console.log("CLICK", e.target.dataset);
+    console.log("CLICK", e.target.id);
     if (e.target.id === "like") {
       this.setState(
         {
@@ -51,8 +51,9 @@ class PostDetails extends Component {
           ([key, comment]) => comment && comment.postId === postId
         )
       : null;
-    const isLike = post.whoLikes && post.whoLikes.includes(auth.uid);
 
+    const isLike = post.whoLikes && post.whoLikes.includes(auth.uid);
+    console.log("^", isLike);
     if (!auth.uid) return <Redirect to="/Login" />;
     if (post) {
       return (
@@ -128,8 +129,6 @@ const mapStateToProps = (state, ownProps) => {
   const posts = state.firestore.data.Posts;
   const allComments = state.firestore.data.comments;
   const post = posts ? posts[id] : null;
-  const alllikes = state.firestore.data.likes;
-  console.log("**", state.firestore.data);
   return {
     id: id,
     post: post,
@@ -137,7 +136,6 @@ const mapStateToProps = (state, ownProps) => {
     comments: allComments,
     profile: state.firebase.profile,
     user: state.firebase.comments,
-    likes: alllikes,
   };
 };
 const mapDispatchToProps = (dispatch) => {
