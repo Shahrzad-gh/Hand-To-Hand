@@ -10,10 +10,12 @@ import {
 } from "../../store/actions/postActions";
 
 class PostSummary extends Component {
+  //Which post and who like/unlike post
   state = {
     userId: "",
     postId: "",
   };
+  //to find out user Like or unlike
   handleClick = (e) => {
     console.log("CLICK", e.target.dataset);
     if (e.target.id === "like") {
@@ -46,14 +48,16 @@ class PostSummary extends Component {
     this.props.deletePost(e.target.dataset.postid);
   };
   render() {
+    //evertime just one post send as props
+    //auth is who is online now
     const { post, auth } = this.props;
     console.log("summary", post);
     console.log("postID-summary", post.authorId);
     console.log("Is userID", auth);
     console.log("post URL", post);
+    // if online user likes this current post => to show correct Icon
     const isLike = post.whoLikes && post.whoLikes.includes(auth.uid);
 
-    //
     return (
       <div className="postSummary">
         <div className="card col-md-12 p-0">
@@ -65,6 +69,7 @@ class PostSummary extends Component {
                     width="50"
                     height="50"
                     alt=""
+                    //photoURL is set after signUp and first time is a default pic
                     src={auth.photoURL}
                     className="rounded-circle border-dark mr-2"
                   />
@@ -107,13 +112,13 @@ class PostSummary extends Component {
                 </span>
               </div>
               <div className="card-footer col-md-12">
-                <button className="btn p-0" onClick={this.handleClick}>
+                <button className="btn" onClick={this.handleClick}>
                   {!isLike && (
                     <i
                       id="like"
                       data-userid={auth.uid}
                       data-postid={post.id}
-                      className="far fa-heart p-0 mr-1"
+                      className="far fa-heart mr-1"
                     ></i>
                   )}
                   {isLike && (
@@ -121,7 +126,7 @@ class PostSummary extends Component {
                       id="unlike"
                       data-userid={auth.uid}
                       data-postid={post.id}
-                      className="fas fa-heart p-0 mr-1"
+                      className="fas fa-heart mr-1"
                     ></i>
                   )}
                 </button>

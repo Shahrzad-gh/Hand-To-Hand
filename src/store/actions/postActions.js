@@ -5,7 +5,6 @@ export const createPost = (post) => {
     console.log("creat-postAction:post", post);
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
-    //console.log("imgName", post.url.name);
     const firebase = getFirebase();
     post.imgFile &&
       firebase
@@ -14,6 +13,7 @@ export const createPost = (post) => {
         .child(post.imgFile.name)
         .getDownloadURL()
         .then((url) => {
+          //url is firebase Image URL that add to a post
           post.url = url;
           console.log("URL", url);
         })
@@ -51,6 +51,8 @@ export const likePost = (post) => {
     const firestore = getFirestore();
     const firebase = getFirebase();
     console.log("postAction-post", post);
+    //to like a post and add information of user that liked it to whoLikes arry
+
     const arrayUnion = firebase.firestore.FieldValue.arrayUnion;
     const posts = getState().firestore.data.Posts;
     console.log("postAction-post", posts);
@@ -77,6 +79,7 @@ export const unlikePost = (post) => {
     const firestore = getFirestore();
     const firebase = getFirebase();
     console.log("postAction-post", post);
+    //to unlike a post and delete information of user that liked it befor from whoLikes arry
     const arrayRemove = firebase.firestore.FieldValue.arrayRemove;
     const posts = getState().firestore.data.Posts;
     const likeCounts = posts[post.postId].likeCount;
@@ -190,13 +193,6 @@ export const uploadImage = (imgFile) => {
     const storageRef = firebase.storage().ref("Photos/" + imgFile.name);
 
     var task = storageRef.put(imgFile);
-    //   .then(() => {
-    //     dispatch({ type: "UPLOAD_IMG_SUCCESS" });
-    //   })
-    //   .catch((err) => {
-    //     dispatch({ type: "UPLOAD_IMG_ERROR", err });
-    //   });
-    // console.log("task-action", task);
 
     task.on(
       firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'

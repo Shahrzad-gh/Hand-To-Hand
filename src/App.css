@@ -1,20 +1,18 @@
-body,
-html {
+body, html {
   background-color: #ff562209;
 }
 
-/* .fa {
+.fa {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-} */
+}
 
 .newPostAttachment ul li {
   display: inline-block;
-
   width: 100%;
 }
 
@@ -58,7 +56,6 @@ html {
 
 .profile-link i {
   margin-right: 3px;
-  font-size: 1.5rem !important;
 }
 
 .btn {
@@ -341,7 +338,7 @@ i {
   bottom: 25px;
 }
 
-.message-inner-data > p {
+.message-inner-data>p {
   float: right;
   width: 60%;
   background-color: #e44d3a;
@@ -356,7 +353,7 @@ i {
   border-radius: 15px;
 }
 
-.message-data.st3 .message-inner-data > p {
+.message-data.st3 .message-inner-data>p {
   background-color: #efefef;
   color: #686868;
   width: auto;
@@ -441,18 +438,7 @@ i {
   width: 100%;
 }
 
-.z-depth-1,
-nav,
-.card-panel,
-.card,
-.toast,
-.btn,
-.btn-large,
-.btn-small,
-.btn-floating,
-.dropdown-content,
-.collapsible,
-.sidenav {
+.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
@@ -506,9 +492,11 @@ nav,
 /* .SettingTabContent .setting {
   display: inline;
 } */
+
 .change-pic i {
   color: #686868;
 }
+
 .add-pic i {
   bottom: 0;
   font-size: 14px;
@@ -525,6 +513,7 @@ nav,
   top: -185px;
   left: 25px;
 }
+
 .profileThumbnail {
   border-radius: 45px/15px;
 }
@@ -554,11 +543,13 @@ input[type="checkbox"] {
   margin: 0;
   transform: translateX(-9999px);
 }
+
 .add-pic input[type="file"] {
   opacity: 0;
   padding: 10px 0px 9px;
   display: none;
 }
+
 .change-pic input[type="file"] {
   opacity: 0;
   padding: 10px 0px 9px;
