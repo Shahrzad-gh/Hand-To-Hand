@@ -78,7 +78,20 @@ class PostDetails extends Component {
                   </button>
                 </div>
                 <div className="card-content">
-                  <span>{post.content}</span>
+                  {post.imgFile ? (
+                    <div className="img-post-content mb-3">
+                      <img
+                        id="post-image"
+                        src={post.imgFile}
+                        width="100%"
+                        height="auto%"
+                      />
+                    </div>
+                  ) : null}
+
+                  <div className="post-content">
+                    <span>{post.content}</span>
+                  </div>
                 </div>
                 <div className="ml-2">
                   <span>
@@ -146,5 +159,5 @@ const mapDispatchToProps = (dispatch) => {
 };
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect([{ collection: "comments" }])
+  firestoreConnect([{ collection: "comments" }, { collection: "Posts" }])
 )(PostDetails);
