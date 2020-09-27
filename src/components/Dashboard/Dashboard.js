@@ -10,16 +10,16 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-
+import "./Dashboard.scss"
 class Dashboard extends Component {
   render() {
     const { posts, auth, profile, notifications, users } = this.props;
     if (!auth.uid) return <Redirect to="/Login" />;
 
     return (
-      <div>
+      <div className="dashboard">
         <Navbar />
-        <div className="dashboard container-xl mt-3 p-0">
+        <div className=" mt-3 p-0">
           <div className="row col-md-12">
             <div className="col-md-3">
               <div className="col">

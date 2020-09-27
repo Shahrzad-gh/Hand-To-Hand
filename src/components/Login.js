@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import {Link} from "react-router-dom"
 import { signIn } from "../store//actions/authActions";
 import { Redirect } from "react-router-dom";
 class Login extends Component {
@@ -58,6 +59,7 @@ class Login extends Component {
               {authError ? (
                 <p className="text-danger text-center">Login Faild</p>
               ) : null}
+              <Link to="Register">Create Account</Link>
             </div>
           </form>
         </div>

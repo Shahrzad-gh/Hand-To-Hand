@@ -10,7 +10,7 @@ class NewPost extends Component {
     showPicker: false,
     emoji: "",
     imgFile: null,
-    url: "",
+    url: null,
     file: [],
   };
 
@@ -68,15 +68,15 @@ class NewPost extends Component {
                     <button className="btn right">
                       <i className="fas fa-share"></i>
                     </button>
-                    <div>
+                    {this.state.url != null ? <div>
                       <img
                         id="img-post"
                         src={this.state.url}
-                        alt=""
+                        alt="pictureInPost"
                         width="300"
                         height="200"
                       />
-                    </div>
+                    </div> : null }
                     <div className="row mb-0">
                       <div className="add-emoji">
                         <i

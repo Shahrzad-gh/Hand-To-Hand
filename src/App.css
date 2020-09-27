@@ -1,5 +1,10 @@
-body, html {
-  background-color: #ff562209;
+body,
+html {}
+
+.Landing {
+  background-image: url(https://image.freepik.com/free-photo/discussing-mobile-app_1098-18640.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .fa {
@@ -11,14 +16,18 @@ body, html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.container {
+  border-radius: 25px;
+}
+
 .newPostAttachment ul li {
   display: inline-block;
   width: 100%;
 }
 
-.card {
+/* .card {
   border-color: #e44d3a;
-}
+} */
 
 .postSummary .card {
   border-top-left-radius: 25px;
@@ -438,7 +447,18 @@ i {
   width: 100%;
 }
 
-.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav {
+.z-depth-1,
+nav,
+.card-panel,
+.card,
+.toast,
+.btn,
+.btn-large,
+.btn-small,
+.btn-floating,
+.dropdown-content,
+.collapsible,
+.sidenav {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }

@@ -15,6 +15,7 @@
     "framer-motion": "^1.11.0",
     "jquery": "^3.5.1",
     "moment": "^2.26.0",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",

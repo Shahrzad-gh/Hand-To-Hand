@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import UserProfileLink from "../Profile/UserProfileLink";
+//import UserProfileLink from "../Profile/UserProfileLink";
 import { auth } from "firebase";
 export default function Suggestion(props) {
   const { suggestions } = props;
@@ -32,7 +32,7 @@ export default function Suggestion(props) {
                       <strong className="mr-2">
                         {user.firstName} {user.lastName}
                       </strong>
-                      <a>
+                      
                         <Link
                           to={{
                             pathname: "/user/" + user.id,
@@ -47,7 +47,7 @@ export default function Suggestion(props) {
                         >
                           <i className="fas fa-plus"></i>
                         </Link>
-                      </a>
+                      
                     </div>
                   </div>
                 </li>
