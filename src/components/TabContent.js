@@ -9,19 +9,15 @@ import "../App.css";
 export default class TabContent extends Component {
   render() {
     return (
-      //<div className="tabContent container up">
       <div className="tabContent container up">
-      {/* <TabList> */}
-          <div label="Signin">
-          {/* <div label="Signin" className="tab-content"> */}
-            <p className="center">Login</p>
+      <TabList>
+          <div label="Signin" className="tab-content">
             <Login />
           </div>
-          <div label="Signup">
-          {/* <div label="Signup" className="tab-content"> */}
-            {/* <Register /> */}
+          <div label="Signup" className="tab-content">
+            <Register />
           </div>
-        {/* </-TabList> */}
+        </TabList>
       </div>
     );
   }
