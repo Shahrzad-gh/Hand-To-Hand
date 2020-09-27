@@ -1,14 +1,16 @@
 import React from "react";
-import Post from "./Post";
+import PostSummary from "./PostSummary";
 
-export default function PostsList({ posts }) {
-  console.log("PostList", posts);
+export default function PostsList({ posts, auth }) {
+  const user = auth;
+  console.log("POSTLIST-myPosts", posts);
+  console.log("POSTLIST-Auth", auth);
   return (
     <div className="postsList">
       {posts &&
-        posts.map((post) => {
-          return <Post post={post} key={post.id} />;
-        })}
+        posts.map((post) => (
+          <PostSummary auth={user} post={post} key={post.id} />
+        ))}
     </div>
   );
 }
