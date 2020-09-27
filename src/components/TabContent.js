@@ -10,14 +10,8 @@ export default class TabContent extends Component {
   render() {
     return (
       <div className="tabContent container up">
-<<<<<<< Updated upstream
-        <TabList>
-          <div label="Signin" className="tab-content">
-=======
       <TabList>
           <div label="Signin" className="tab-content">
-            <p className="center">Login</p>
->>>>>>> Stashed changes
             <Login />
           </div>
           <div label="Signup" className="tab-content">
