@@ -23,28 +23,67 @@ class Register extends Component {
     const { auth, authError } = this.props;
     if (auth.uid) return <Redirect to="/Dashboard" />;
     return (
-        
-
-        <div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+ <div className="register d-flex align-items-center flex-column justify-content-center ">
+        <div className="container-md col-md-12 bg-light">
+          <form className="mt-3" onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <input
+                onChange={this.handleChange}
+                id="firstName"
+                className="form-control form-control-md"
+                placeholder="firstName"
+                type="text"
+              />
+            </div>
+            <div className="form-group">
+              <input
+                onChange={this.handleChange}
+                id="lastName"
+                className="form-control form-control-md"
+                placeholder="lastName"
+                type="text"
+              />
+            </div>
+            <div className="form-group">
+              <input
+                onChange={this.handleChange}
+                id="email"
+                className="form-control form-control-md"
+                placeholder="Email"
+                type="text"
+              />
+            </div>
+            <div className="form-group">
+              <input
+                onChange={this.handleChange}
+                id="password"
+                className="form-control form-control-md"
+                placeholder="Password"
+                type="text"
+              />
+            </div>
+            <div className="form-group">
+              <input
+                className="form-control form-control-md"
+                placeholder="Repeat password"
+                type="text"
+              />
+            </div>
+            <div className="form-group d-flex justify-content-between">
+              <input type="checkbox" />
+              <span>Accept agrement</span>
+            </div>
+            <button className="btn btn-info btn-md btn-block">
+              Create account
+            </button>
+            {authError ? (
+              <p className="text-danger text-center">{authError}</p>
+            ) : null}
+          </form>
+        </div> 
+        </div>
     );
+ 
   }
 }
 const mapStateToProps = (state) => {
