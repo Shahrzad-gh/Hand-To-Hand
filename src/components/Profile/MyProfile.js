@@ -24,7 +24,7 @@ export default function MyProfile(props) {
         alt="Loading..."
       />
       <button className="btn profile-header-change-btn">Change Header</button>
-      <div className="mt-3 p-0">
+      <div className="mt-3 mb-0 p-0">
         <div className="row col-md-12">
           <div className="col-md-3">
             <div className="col">

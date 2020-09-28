@@ -35,7 +35,7 @@ function SignInLinks(props) {
           </a>
         </li>
         <li className="right">
-          <button className="btn btn-floating bg-floating" type="button">
+          <button className="btn btn-floating" type="button">
             {props.profile.initials}
           </button>
         </li>
