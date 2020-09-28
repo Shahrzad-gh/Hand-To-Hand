@@ -5,6 +5,7 @@ import NotificationsList from "../Notifications/NotificationsList";
 import Suggestion from "../Dashboard/Suggestion";
 import MyProfileLinks from "./MyProfileLinks";
 import { Link } from "react-router-dom";
+import "./MyProfile.scss"
 
 export default function MyProfile(props) {
   console.log("MYPROF", props);
@@ -23,7 +24,7 @@ export default function MyProfile(props) {
         alt="Loading..."
       />
       <button className="btn profile-header-change-btn">Change Header</button>
-      <div className="dashboard container-xl mt-3 p-0">
+      <div className="mt-3 p-0">
         <div className="row col-md-12">
           <div className="col-md-3">
             <div className="col">
