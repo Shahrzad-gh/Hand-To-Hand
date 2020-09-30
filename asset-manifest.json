@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Hand-To-Hand/static/css/main.3683c902.chunk.css",
-    "main.js": "/Hand-To-Hand/static/js/main.496fbc8d.chunk.js",
-    "main.js.map": "/Hand-To-Hand/static/js/main.496fbc8d.chunk.js.map",
+    "main.js": "/Hand-To-Hand/static/js/main.a5f1513b.chunk.js",
+    "main.js.map": "/Hand-To-Hand/static/js/main.a5f1513b.chunk.js.map",
     "runtime-main.js": "/Hand-To-Hand/static/js/runtime-main.012aee30.js",
     "runtime-main.js.map": "/Hand-To-Hand/static/js/runtime-main.012aee30.js.map",
     "static/css/2.0b0521d5.chunk.css": "/Hand-To-Hand/static/css/2.0b0521d5.chunk.css",
     "static/js/2.4ab0f1ba.chunk.js": "/Hand-To-Hand/static/js/2.4ab0f1ba.chunk.js",
     "static/js/2.4ab0f1ba.chunk.js.map": "/Hand-To-Hand/static/js/2.4ab0f1ba.chunk.js.map",
     "index.html": "/Hand-To-Hand/index.html",
-    "precache-manifest.224e9f69dfab70eb44cd54ce2993a90d.js": "/Hand-To-Hand/precache-manifest.224e9f69dfab70eb44cd54ce2993a90d.js",
+    "precache-manifest.cc839888571fd0c6ce4bd5c87ef7315a.js": "/Hand-To-Hand/precache-manifest.cc839888571fd0c6ce4bd5c87ef7315a.js",
     "service-worker.js": "/Hand-To-Hand/service-worker.js",
     "static/css/2.0b0521d5.chunk.css.map": "/Hand-To-Hand/static/css/2.0b0521d5.chunk.css.map",
     "static/css/main.3683c902.chunk.css.map": "/Hand-To-Hand/static/css/main.3683c902.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.0b0521d5.chunk.css",
     "static/js/2.4ab0f1ba.chunk.js",
     "static/css/main.3683c902.chunk.css",
-    "static/js/main.496fbc8d.chunk.js"
+    "static/js/main.a5f1513b.chunk.js"
   ]
 }
