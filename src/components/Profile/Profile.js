@@ -32,7 +32,7 @@ class Profile extends Component {
             width="120"
             height="120"
             src={photoURL != null ? photoURL : DefaultPhoto}
-            alt=""
+            alt="pic"
             className="profile-pic rounded-circle border border-dark"
           />
           <div className="add-pic">
@@ -47,6 +47,7 @@ class Profile extends Component {
               <i className="fas fa-camera fa-xs"></i>
             </label>
           </div>
+          <button className="btn">Follow</button>
         </div>
 
         <div className="text-center card-content profile-short-info ">

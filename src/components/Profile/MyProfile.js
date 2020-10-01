@@ -43,10 +43,10 @@ export default function MyProfile(props) {
           <div className="col-md-3">
             <div className="row">
               <Link to="/setting/">
-                <a href="/" className="btn text-light ">
+                <button className="btn text-light ">
                   Setting
                   <i class="fas fa-cog mr-2 text-light"></i>
-                </a>
+                </button>
               </Link>
               <NotificationsList
                 notifications={notifications}

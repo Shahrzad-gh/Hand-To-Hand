@@ -6,6 +6,7 @@ import Suggestion from "../Dashboard/Suggestion";
 import UserProfileLink from "./UserProfileLink";
 import { auth } from "firebase";
 export default function UserProfile(props) {
+  console.log("P", props)
   const notifications = props.location.props.notifications;
   const user = props.location.props.user;
   const suggestions = props.location.props.suggestions;

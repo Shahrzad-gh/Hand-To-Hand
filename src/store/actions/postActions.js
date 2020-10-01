@@ -18,8 +18,8 @@ export const createPost = (post) => {
           console.log("URL", url);
         })
         .catch((err) => console.log("dl", err));
-    console.log("url", post.url);
-    console.log("url-imgfile", post.imgFile.url);
+    //console.log("url", post.url);
+    //console.log("url-imgfile", post.imgFile.url);
 
     firestore
       .collection("Posts")

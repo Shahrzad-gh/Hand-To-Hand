@@ -5,7 +5,8 @@ import { HashRouter as Router, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard/Dashboard";
 import MyProfile from "./components/Profile/MyProfile";
 import UserProfile from "./components/Profile/UserProfile";
-import Message from "./components/Profile/Message";
+//import Message from "./components/Profile/Message";
+import chatLogin from "./components/Profile/chatLogin";
 import PostDetails from "./components/Posts/PostDetails";
 import Setting from "./components/Setting/Setting";
 function App() {
@@ -17,7 +18,8 @@ function App() {
         <Route exact path="/MyProfile" component={MyProfile} />
         <Route exact path="/user/:id" component={UserProfile} />
         <Route path="/post/:id" component={PostDetails} />
-        <Route exact path="/Message" component={Message} />
+        {/* <Route exact path="/Message" component={Message} /> */}
+        <Route exact path="/Chat" component={chatLogin} />
         <Route exact path="/Setting" component={Setting} />
       </Router>
     </div>

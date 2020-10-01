@@ -76,14 +76,14 @@ class PostSummary extends Component {
                   <strong className="mr-2">
                     {post.authorFirstName} {post.authorLastName}
                   </strong>
-                  <a className="right">
-                    <i class="far fa-bookmark "></i>
+                  <a  className="right">
+                    <i className="far fa-bookmark "></i>
                   </a>
-                  <a className="right">
+                  <a  className="right">
                     {post.authorId === auth.uid ? (
                       <i
-                        class="fas fa-trash mr-2"
-                        data-postId={post.id}
+                        className="fas fa-trash mr-2"
+                        data-postid={post.id}
                         onClick={this.handleDelete}
                       ></i>
                     ) : null}
@@ -98,6 +98,7 @@ class PostSummary extends Component {
                       src={post.imgFile}
                       width="100%"
                       height="auto%"
+                      alt="pic"
                     />
                   </div>
                 ) : null}
@@ -138,7 +139,7 @@ class PostSummary extends Component {
                 </Link>
 
                 <a className="right">
-                  <i class="fas fa-eye mr-1"></i>
+                  <i className="fas fa-eye mr-1"></i>
                   <span>{post.views}</span>
                 </a>
               </div>
