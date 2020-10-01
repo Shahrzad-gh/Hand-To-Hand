@@ -2,79 +2,47 @@ import React, { useState } from 'react'
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import firebase from "../../config/fbConfig"
+import { Redirect } from 'react-router-dom';
 
 export default function ChatLogin() {
-    const [value, setValue] = useState();
+    //const [value, setValue] = useState();
     
-    function setUpRecapcha(){      
-      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-        'sign-in-button', {
-          'size': 'invisible',
-          'callback': function(response) {
-            // reCAPTCHA solved, allow signInWithPhoneNumber.
-            onSignInSubmit();
-          }
+
+    function onSignInSubmit(){
+      var recaptcha = new firebase.auth.RecaptchaVerifier('recaptcha');
+      var number = '+989357795479';
+      console.log(number)
+      firebase.auth().signInWithPhoneNumber(number, recaptcha)
+      .then( function(e) {
+        var code = prompt('Enter the otp', '');        
+        if(code === null) return;        
+        e.confirm(code).then(function (result) {
+            console.log(result.user);
+            //return <Redirect to="/Message"/>
+        }).catch(function (error) {
+            console.error( error);            
         });
-    }
-    function onChangeHandler(e){
-      const { name, value } = e.target;
-      //setState({[name]: value,});
-    }
+    })
+    .catch(function (error) {
+        console.error( error);
 
-    function onSignInSubmit(e){
-      e.preventDefault();
-      var phoneNumber = e.target.value;
-      console.log("phone", phoneNumber);
-      setUpRecapcha();
-      var appVerifier = window.recaptchaVerifier;
-      firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-      .then(function (confirmationResult) {
-        // SMS sent. Prompt user to type the code from the message, then sign the
-        // user in with confirmationResult.confirm(code).
-        window.confirmationResult = confirmationResult;
-        // var code = window.otp
-        //getCodeFromUserInput();
-        //confirmationResult.confirm(code).then(function (result) {
-        // User signed in successfully.
-        //var user = result.user;
-        // ...
-        console.log("OTP is sent")
-      }).catch(function (error) {
-            console.log("E",error)
-      });
+    });
     }
-
-    function onSubmitOtp(e){
-      e.preventDefault();
-      let otpInput = this.state.otp;
-      let optConfirm = window.confirmationResult;
-      // console.log(codee);
-      optConfirm
-        .confirm(otpInput)
-        .then(function (result) {
-          // User signed in successfully.
-          // console.log("Result" + result.verificationID);
-          let user = result.user;
-        })
-        .catch(function (error) {
-          console.log(error);
-          alert("Incorrect OTP");
-        });
-    };
-
     return (
-        <div className="container col-md-8 d-flex align-items-center flex-column justify-content-center min-vh-100">
+        <div id="recaptcha" className="container col-md-8 d-flex align-items-center flex-column justify-content-center min-vh-100">
           <p className="center">Login to chat</p>
           <div id="sign-in-button" className="row overflow-auto">
                 <PhoneInput
                   className="mr-3"
                     placeholder="Enter phone number"
-                    value={value}
-                    onChange={setValue}/>
-                <button onSubmit={onSignInSubmit} className="btn">
+                    //value={value}
+                    //onChange={setValue}
+                    />
+                <button onClick={onSignInSubmit} className="btn">
                     <i className="fas fa-share-square"></i>
                 </button>
           </div>
+          <div id="recaptcha"></div>
           <p className="center">Enter OTP</p>
             <div className="row overflow-auto">
                   <input
@@ -82,9 +50,9 @@ export default function ChatLogin() {
                     type="number"
                     name="otp"
                     placeholder="OTP"
-                    onChange={onChangeHandler}
+                    //onChange={onChangeHandler}
                   />
-                  <button onSubmit={onSubmitOtp} className="btn">
+                  <button className="btn">
                     <i className="fas fa-share-square"></i>
                 </button>
           </div>
