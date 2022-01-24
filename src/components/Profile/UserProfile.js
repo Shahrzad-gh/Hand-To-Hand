@@ -6,7 +6,6 @@ import Suggestion from "../Dashboard/Suggestion";
 import UserProfileLink from "./UserProfileLink";
 import { auth } from "firebase";
 export default function UserProfile(props) {
-  console.log("P", props)
   const notifications = props.location.props.notifications;
   const user = props.location.props.user;
   const suggestions = props.location.props.suggestions;
@@ -21,7 +20,7 @@ export default function UserProfile(props) {
         src="https://img.freepik.com/free-photo/starfish-with-sea-shells-sand_23-2147952981.jpg?size=626&ext=jpg"
         alt="Loading..."
       />
-      <div className="dashboard mt-3 p-0">
+      <div className="dashboard container-xl mt-3 p-0">
         <div className="row col-md-12">
           <div className="col-md-3">
             <div className="col">

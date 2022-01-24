@@ -5,7 +5,6 @@ import NotificationsList from "../Notifications/NotificationsList";
 import Suggestion from "../Dashboard/Suggestion";
 import MyProfileLinks from "./MyProfileLinks";
 import { Link } from "react-router-dom";
-import "./MyProfile.scss"
 
 export default function MyProfile(props) {
   console.log("MYPROF", props);
@@ -24,7 +23,7 @@ export default function MyProfile(props) {
         alt="Loading..."
       />
       <button className="btn profile-header-change-btn">Change Header</button>
-      <div className="mt-3 mb-0 p-0">
+      <div className="dashboard container-xl mt-3 p-0">
         <div className="row col-md-12">
           <div className="col-md-3">
             <div className="col">
@@ -43,10 +42,10 @@ export default function MyProfile(props) {
           <div className="col-md-3">
             <div className="row">
               <Link to="/setting/">
-                <button className="btn text-light ">
+                <a href="/" className="btn text-light ">
                   Setting
                   <i class="fas fa-cog mr-2 text-light"></i>
-                </button>
+                </a>
               </Link>
               <NotificationsList
                 notifications={notifications}

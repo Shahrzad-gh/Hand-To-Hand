@@ -53,7 +53,7 @@ class Login extends Component {
               </a>
             </div>
             <div className="form-group">
-              <button value="submit" className="btn btn-md btn-block">
+              <button value="submit" className="btn btn-info btn-md btn-block">
                 Login
               </button>
               {authError ? (

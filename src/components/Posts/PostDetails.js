@@ -85,7 +85,6 @@ class PostDetails extends Component {
                         src={post.imgFile}
                         width="100%"
                         height="auto%"
-                        alt="pic"
                       />
                     </div>
                   ) : null}
@@ -121,7 +120,7 @@ class PostDetails extends Component {
                   <span>{post.likeCount}</span>
                   <i class="far fa-comment-alt mr-1 ml-2"></i>
                   <span>{post.commentCount}</span>
-                  <a href="/" className="right">
+                  <a className="right">
                     <i class="fas fa-eye mr-1"></i>
                     <span>{post.views}</span>
                   </a>

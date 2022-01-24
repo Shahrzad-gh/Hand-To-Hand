@@ -1,7 +1,5 @@
 body,
-html {
-  /* background-color: #e5e5e5; */
-}
+html {}
 
 .Landing {
   background-image: url(https://image.freepik.com/free-photo/discussing-mobile-app_1098-18640.jpg);
@@ -27,9 +25,9 @@ html {
   width: 100%;
 }
 
-.card {
-  border: none !important;
-}
+/* .card {
+  border-color: #e44d3a;
+} */
 
 .postSummary .card {
   border-top-left-radius: 25px;
@@ -69,8 +67,7 @@ html {
   margin-right: 3px;
 }
 
-.Landing .btn {
-  background-color: #14213d !important;
+.btn {
   padding-right: 5px;
   padding-left: 5px;
 }
@@ -440,12 +437,8 @@ i {
   display: block;
 }
 
-.nav {
-  background-color: #14213d !important;
-}
-
-.btn-floating {
-  background-color: #fca311 !important;
+.nav .nav-pills {
+  background-color: #1e71a2;
 }
 
 .message-page {
@@ -497,13 +490,11 @@ nav,
 
 .card-footer .btn {
   background-color: transparent;
-  padding: 0 !important;
   color: black;
 }
 
 .btn {
-  background-color: #14213d;
-
+  background-color: #1e71a2;
 }
 
 /* .bg-top-profile {
@@ -535,7 +526,7 @@ nav,
   width: 40px;
   height: 40px;
   text-align: center;
-  background: #14213d;
+  background: #1e71a2;
   padding: 12px;
   color: #ffff;
   left: 0;
@@ -563,7 +554,7 @@ nav,
 .bg-half-indigo {
   border-radius: 45px/15px;
   height: 6rem;
-  background-color: #14213d;
+  background-color: #1e71a2;
 }
 
 input[type="checkbox"] {

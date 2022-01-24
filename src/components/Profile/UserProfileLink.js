@@ -5,8 +5,6 @@ import PostsList from "../Posts/PostsList";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import "./UserProfile.scss"
-
 function UserProfileLinks(props) {
   console.log("upl-props", props);
   const user = props.user;
