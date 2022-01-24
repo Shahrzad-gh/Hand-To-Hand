@@ -9,6 +9,8 @@ import AddComment from "../Comments/AddComment";
 import CommentList from "../Comments/CommentsList";
 import Navbar from "../Navbar/Navbar";
 import { likePost, unlikePost } from "../../store/actions/postActions";
+import "../Dashboard/Dashboard.scss";
+
 class PostDetails extends Component {
   state = {
     userId: "",
@@ -94,8 +96,8 @@ class PostDetails extends Component {
                   </div>
                 </div>
                 <div className="ml-2">
-                  <span>
-                    Created At: {moment(post.createAt.toDate()).calendar()}
+                  <span className="createdAt">
+                    {moment(post.createAt.toDate()).calendar()}
                   </span>
                 </div>
                 <div className="card-footer">

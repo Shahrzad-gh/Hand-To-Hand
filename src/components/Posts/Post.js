@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import TopProfile from "../Profile/TopProfile";
-
+import "../Dashboard/Dashboard.scss";
 export default class Post extends Component {
   state = {
     likeCount: 0,

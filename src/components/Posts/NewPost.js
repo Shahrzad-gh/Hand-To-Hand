@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { createPost, uploadImage } from "../../store/actions/postActions";
 import { Redirect } from "react-router-dom";
 import "emoji-mart/css/emoji-mart.css";
+import "../Dashboard/Dashboard.scss";
 import { Picker } from "emoji-mart";
 class NewPost extends Component {
   state = {
@@ -68,15 +69,17 @@ class NewPost extends Component {
                     <button className="btn right">
                       <i className="fas fa-share"></i>
                     </button>
-                    {this.state.url != null ? <div>
-                      <img
-                        id="img-post"
-                        src={this.state.url}
-                        alt="pictureInPost"
-                        width="300"
-                        height="200"
-                      />
-                    </div> : null }
+                    {this.state.url != null ? (
+                      <div>
+                        <img
+                          id="img-post"
+                          src={this.state.url}
+                          alt="pictureInPost"
+                          width="300"
+                          height="200"
+                        />
+                      </div>
+                    ) : null}
                     <div className="row mb-0">
                       <div className="add-emoji">
                         <i

@@ -8,6 +8,7 @@ import {
   unlikePost,
   deletePost,
 } from "../../store/actions/postActions";
+import "../Dashboard/Dashboard.scss";
 
 class PostSummary extends Component {
   //Which post and who like/unlike post
@@ -108,8 +109,8 @@ class PostSummary extends Component {
                 </div>
               </div>
               <div>
-                <span className="ml-2">
-                  Created At: {moment(post.createAt.toDate()).calendar()}
+                <span className=" createdAt ml-2">
+                  {moment(post.createAt.toDate()).calendar()}
                 </span>
               </div>
               <div className="card-footer col-md-12">
