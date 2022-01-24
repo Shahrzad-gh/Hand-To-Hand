@@ -1,3 +1,69 @@
 .dashboard {
-  background-color: #b2b2b2
+  background-color: #efefef;
+}
+.card {
+  border: none;
+}
+.suggestion .card {
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 10px !important;
+}
+
+.suggestion .card-header {
+  padding-bottom: 0 !important;
+  background-color: #efefef;
+  border: none;
+}
+.suggestion .card-header span {
+  color: gray;
+  font-weight: 500;
+}
+
+.materialize-textarea {
+  border-bottom: none;
+}
+.newPost .card {
+  border-radius: 25px;
+  padding: 10px !important;
+}
+.NotificationsList .card {
+  border-radius: 25px;
+  padding: 10px !important;
+}
+
+.NotificationsList .card-header {
+  padding-bottom: 0 !important;
+  background-color: #efefef;
+  border: none;
+}
+.NotificationsList .card-header span {
+  color: gray;
+  font-weight: 500;
+}
+.postsList .card {
+  padding: 10px !important;
+}
+
+.postsList .card-header {
+  border-bottom: none;
+  background-color: #fff;
+}
+.postsList .card-footer {
+  border-top: none;
+  background-color: #fff;
+}
+.postsList .card {
+  border-radius: 25px;
+  padding: 10px !important;
+}
+
+.postDetails .createdAt {
+  font-size: small;
+  color: rgb(167, 166, 166);
+}
+
+.postSummary .createdAt {
+  font-size: small;
+  color: rgb(167, 166, 166);
 }
