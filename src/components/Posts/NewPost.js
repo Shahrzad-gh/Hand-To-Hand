@@ -68,15 +68,17 @@ class NewPost extends Component {
                     <button className="btn right">
                       <i className="fas fa-share"></i>
                     </button>
-                    {this.state.url != null ? <div>
-                      <img
-                        id="img-post"
-                        src={this.state.url}
-                        alt="pictureInPost"
-                        width="300"
-                        height="200"
-                      />
-                    </div> : null }
+                    {this.state.url != null ? (
+                      <div>
+                        <img
+                          id="img-post"
+                          src={this.state.url}
+                          alt="pictureInPost"
+                          width="300"
+                          height="200"
+                        />
+                      </div>
+                    ) : null}
                     <div className="row mb-0">
                       <div className="add-emoji">
                         <i
