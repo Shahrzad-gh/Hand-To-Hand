@@ -44,7 +44,7 @@ class CommentSummary extends Component {
               <a>
                 {comment[1].userId === auth.uid ? (
                   <i
-                    class="fas fa-trash mr-2"
+                    className="fas fa-trash mr-2"
                     data-postid={comment[1].postId}
                     data-commentid={comment[0]}
                     onClick={this.handleDelete}

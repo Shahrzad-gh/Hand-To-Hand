@@ -74,7 +74,7 @@ class PostDetails extends Component {
                     {post.authorFirstName} {post.authorLastName}
                   </strong>
                   <button className="btn right">
-                    <i class="far fa-bookmark"></i>
+                    <i className="far fa-bookmark"></i>
                   </button>
                 </div>
                 <div className="card-content">
@@ -118,10 +118,10 @@ class PostDetails extends Component {
                     )}
                   </button>
                   <span>{post.likeCount}</span>
-                  <i class="far fa-comment-alt mr-1 ml-2"></i>
+                  <i className="far fa-comment-alt mr-1 ml-2"></i>
                   <span>{post.commentCount}</span>
                   <a className="right">
-                    <i class="fas fa-eye mr-1"></i>
+                    <i className="fas fa-eye mr-1"></i>
                     <span>{post.views}</span>
                   </a>
                 </div>
