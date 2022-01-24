@@ -9,6 +9,8 @@ import AddComment from "../Comments/AddComment";
 import CommentList from "../Comments/CommentsList";
 import Navbar from "../Navbar/Navbar";
 import { likePost, unlikePost } from "../../store/actions/postActions";
+import "../Dashboard/Dashboard.scss";
+
 class PostDetails extends Component {
   state = {
     userId: "",
@@ -74,7 +76,7 @@ class PostDetails extends Component {
                     {post.authorFirstName} {post.authorLastName}
                   </strong>
                   <button className="btn right">
-                    <i class="far fa-bookmark"></i>
+                    <i className="far fa-bookmark"></i>
                   </button>
                 </div>
                 <div className="card-content">
@@ -94,8 +96,8 @@ class PostDetails extends Component {
                   </div>
                 </div>
                 <div className="ml-2">
-                  <span>
-                    Created At: {moment(post.createAt.toDate()).calendar()}
+                  <span className="createdAt">
+                    {moment(post.createAt.toDate()).calendar()}
                   </span>
                 </div>
                 <div className="card-footer">
@@ -118,10 +120,10 @@ class PostDetails extends Component {
                     )}
                   </button>
                   <span>{post.likeCount}</span>
-                  <i class="far fa-comment-alt mr-1 ml-2"></i>
+                  <i className="far fa-comment-alt mr-1 ml-2"></i>
                   <span>{post.commentCount}</span>
                   <a className="right">
-                    <i class="fas fa-eye mr-1"></i>
+                    <i className="fas fa-eye mr-1"></i>
                     <span>{post.views}</span>
                   </a>
                 </div>

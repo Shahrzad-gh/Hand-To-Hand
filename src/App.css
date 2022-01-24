@@ -1,5 +1,7 @@
 body,
-html {}
+html {
+  /* background-color: #e5e5e5; */
+}
 
 .Landing {
   background-image: url(https://image.freepik.com/free-photo/discussing-mobile-app_1098-18640.jpg);
@@ -29,18 +31,18 @@ html {}
   border-color: #e44d3a;
 } */
 
-.postSummary .card {
+/* .postSummary .card {
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
-}
+} */
 
-.postSummary .card-footer {
+/* .postSummary .card-footer {
   border-bottom-right-radius: 25px;
-}
+} */
 
-.postSummary .card-header {
+/* .postSummary .card-header {
   border-top-left-radius: 25px;
-}
+} */
 
 .NotificationsList li {
   list-style: none;
@@ -347,7 +349,7 @@ i {
   bottom: 25px;
 }
 
-.message-inner-data>p {
+.message-inner-data > p {
   float: right;
   width: 60%;
   background-color: #e44d3a;
@@ -362,7 +364,7 @@ i {
   border-radius: 15px;
 }
 
-.message-data.st3 .message-inner-data>p {
+.message-data.st3 .message-inner-data > p {
   background-color: #efefef;
   color: #686868;
   width: auto;

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { createPost, uploadImage } from "../../store/actions/postActions";
 import { Redirect } from "react-router-dom";
 import "emoji-mart/css/emoji-mart.css";
+import "../Dashboard/Dashboard.scss";
 import { Picker } from "emoji-mart";
 class NewPost extends Component {
   state = {
