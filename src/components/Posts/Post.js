@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TopProfile from "../Profile/TopProfile";
+//import TopProfile from "../Profile/TopProfile";
 
 export default class Post extends Component {
   state = {
