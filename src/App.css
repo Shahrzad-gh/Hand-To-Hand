@@ -477,7 +477,9 @@ nav,
 .comment {
   position: relative;
 }
-
+.card-content {
+  padding: 0;
+}
 .comment a i {
   position: absolute;
   right: 60px;
