@@ -5,6 +5,7 @@ export const createPost = (post) => {
     console.log("creat-postAction:post", post);
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
+    console.log(getState().firebase.auth);
     const firebase = getFirebase();
     post.imgFile &&
       firebase
@@ -18,8 +19,8 @@ export const createPost = (post) => {
           console.log("URL", url);
         })
         .catch((err) => console.log("dl", err));
-    console.log("url", post.url);
-    console.log("url-imgfile", post.imgFile.url);
+    // console.log("url", post.url);
+    // console.log("url-imgfile", post.imgFile.url);
 
     firestore
       .collection("Posts")
