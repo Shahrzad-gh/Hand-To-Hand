@@ -28,6 +28,8 @@
   padding: 10px !important;
 }
 .NotificationsList .card {
+  background-color: #fff;
+
   border-radius: 25px;
   padding: 10px !important;
 }
@@ -66,4 +68,13 @@
 .postSummary .createdAt {
   font-size: small;
   color: rgb(167, 166, 166);
+}
+
+.profileThumbnail {
+  background-color: #fff;
+}
+
+.profileThumbnail img {
+  object-fit: cover;
+  border: 4px solid #fff;
 }
