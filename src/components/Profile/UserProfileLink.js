@@ -6,9 +6,8 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 function UserProfileLinks(props) {
-  console.log("upl-props", props);
   const user = props.user;
-  console.log("upl-user", user);
+
   const posts = props.posts;
   const myposts = posts
     ? posts.filter((post) => post.authorId === user.id)

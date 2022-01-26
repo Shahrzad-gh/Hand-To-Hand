@@ -23,12 +23,12 @@ class Dashboard extends Component {
           <div className="row col-md-12">
             <div className="col-md-3">
               <div className="col">
-                {/* <ProfileThumbnail
+                <ProfileThumbnail
                   auth={auth}
                   profile={profile}
                   notifications={notifications}
                   suggestions={users}
-                /> */}
+                />
                 <Suggestion
                   suggestions={users}
                   notifications={notifications}

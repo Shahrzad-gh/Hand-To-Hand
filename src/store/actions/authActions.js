@@ -12,8 +12,8 @@ export const signIn = (credentials) => {
       });
 
     firebase.auth().onAuthStateChanged(function (user) {
-      var userr = firebase.auth().currentUser;
-      console.log("S*", userr);
+      // var current = firebase.auth().currentUser;
+
       if (user) {
         // User is signed in.
       } else {

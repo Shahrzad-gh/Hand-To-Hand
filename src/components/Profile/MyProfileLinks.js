@@ -9,15 +9,18 @@ import { compose } from "redux";
 
 class MyProfileLinks extends Component {
   render() {
-    const { auth, posts, user, mylikes } = this.props;
+    const {
+      auth,
+      posts,
+      user,
+      //, mylikes
+    } = this.props;
     const uid = auth.uid;
-    console.log("allPosts", posts);
-    console.log("user-online", uid);
+
     const myposts = posts
       ? posts.filter((post) => post.authorId === uid)
       : null;
 
-    console.log("myPosts", myposts);
     return (
       <div>
         <div className="container m-2">

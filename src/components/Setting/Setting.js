@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import TabList from "../TabList";
-import AccountSetting from "./AccountSetting";
-import ChangePassword from "./ChangePassword";
-import Security from "./Security";
-import Privacy from "./Privacy";
+// import AccountSetting from "./AccountSetting";
+// import ChangePassword from "./ChangePassword";
+// import Security from "./Security";
+// import Privacy from "./Privacy";
 import Navbar from "../Navbar/Navbar";
 export default class Setting extends Component {
   render() {

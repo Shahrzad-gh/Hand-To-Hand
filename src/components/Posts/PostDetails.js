@@ -17,7 +17,6 @@ class PostDetails extends Component {
     postId: "",
   };
   handleClick = (e) => {
-    console.log("CLICK", e.target.id);
     if (e.target.id === "like") {
       this.setState(
         {
@@ -25,7 +24,6 @@ class PostDetails extends Component {
           postId: e.target.dataset.postid,
         },
         function () {
-          console.log("state-likePost", this.state);
           this.props.likePost(this.state);
         }
       );
@@ -36,7 +34,6 @@ class PostDetails extends Component {
           postId: e.target.dataset.postid,
         },
         function () {
-          console.log("state-unlikePost", this.state);
           this.props.unlikePost(this.state);
         }
       );
@@ -44,10 +41,9 @@ class PostDetails extends Component {
   };
   render() {
     const { post, auth, comments, profile } = this.props;
-    console.log("?", this.props);
-    console.log("??", auth.uid);
+
     const postId = this.props.match.params.id;
-    console.log("pID", postId);
+
     const thisPostComments = comments
       ? Object.entries(comments).filter(
           ([key, comment]) => comment && comment.postId === postId
@@ -55,7 +51,7 @@ class PostDetails extends Component {
       : null;
 
     const isLike = post.whoLikes && post.whoLikes.includes(auth.uid);
-    console.log("^", isLike);
+
     if (!auth.uid) return <Redirect to="/Login" />;
     if (post) {
       return (

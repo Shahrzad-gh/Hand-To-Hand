@@ -18,7 +18,6 @@ class PostSummary extends Component {
   };
   //to find out user Like or unlike
   handleClick = (e) => {
-    console.log("CLICK", e.target.dataset);
     if (e.target.id === "like") {
       this.setState(
         {
@@ -26,7 +25,6 @@ class PostSummary extends Component {
           postId: e.target.dataset.postid,
         },
         function () {
-          console.log("state-likePost", this.state);
           this.props.likePost(this.state);
         }
       );
@@ -37,7 +35,6 @@ class PostSummary extends Component {
           postId: e.target.dataset.postid,
         },
         function () {
-          console.log("state-unlikePost", this.state);
           this.props.unlikePost(this.state);
         }
       );
@@ -45,17 +42,13 @@ class PostSummary extends Component {
   };
 
   handleDelete = (e) => {
-    console.log("DEL", e.target.dataset.postid);
     this.props.deletePost(e.target.dataset.postid);
   };
   render() {
     //evertime just one post send as props
     //auth is who is online now
     const { post, auth } = this.props;
-    console.log("summary", post);
-    console.log("postID-summary", post.authorId);
-    console.log("Is userID", auth);
-    console.log("post URL", post);
+
     // if online user likes this current post => to show correct Icon
     const isLike = post.whoLikes && post.whoLikes.includes(auth.uid);
     let DefaultPhoto =
@@ -78,10 +71,10 @@ class PostSummary extends Component {
                   <strong className="mr-2">
                     {post.authorFirstName} {post.authorLastName}
                   </strong>
-                  <a className="right">
+                  <button className="right">
                     <i className="far fa-bookmark "></i>
-                  </a>
-                  <a className="right">
+                  </button>
+                  <button className="right">
                     {post.authorId === auth.uid ? (
                       <i
                         className="fas fa-trash mr-2"
@@ -89,13 +82,14 @@ class PostSummary extends Component {
                         onClick={this.handleDelete}
                       ></i>
                     ) : null}
-                  </a>
+                  </button>
                 </div>
               </div>
               <div className="card-content">
                 {post.imgFile ? (
                   <div className="img-post-content mb-3">
                     <img
+                      alt="img"
                       id="post-image"
                       src={post.imgFile}
                       width="100%"
@@ -139,10 +133,10 @@ class PostSummary extends Component {
                   <span className="text-dark">{post.commentCount}</span>
                 </Link>
 
-                <a className="right">
+                <button className="right">
                   <i className="fas fa-eye mr-1"></i>
                   <span>{post.views}</span>
-                </a>
+                </button>
               </div>
             </div>
           </div>

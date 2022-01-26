@@ -9,19 +9,14 @@ class Profile extends Component {
     url: "",
   };
   handleUploadProfilePic = (e) => {
-    console.log("img", URL.createObjectURL(e.target.files[0]));
-    this.setState(
-      {
-        url: URL.createObjectURL(e.target.files[0]),
-        imgFile: e.target.files[0],
-      },
-      console.log("url & imgFile", this.state)
-    );
+    this.setState({
+      url: URL.createObjectURL(e.target.files[0]),
+      imgFile: e.target.files[0],
+    });
     this.props.updateImageProfile(e.target.files[0]);
   };
 
   render() {
-    console.log("Props", this.props);
     const { photoURL } = this.props;
     return (
       <div className="card text-center m-0">

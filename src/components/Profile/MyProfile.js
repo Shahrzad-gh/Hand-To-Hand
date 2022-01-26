@@ -5,13 +5,14 @@ import NotificationsList from "../Notifications/NotificationsList";
 import Suggestion from "../Dashboard/Suggestion";
 import MyProfileLinks from "./MyProfileLinks";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
+export default function MyProfile() {
+  const location = useLocation();
+  const auth = location.state.props.auth;
 
-export default function MyProfile(props) {
-  console.log("MYPROF", props);
-  const auth = props.location.props.state.auth;
-  const notifications = props.location.props.state.notifications;
-  const userSuggestions = props.location.props.state.suggestions;
-  const user = props.location.props.state.profile;
+  const notifications = location.state.props.notifications;
+  const userSuggestions = location.state.props.suggestions;
+  const user = location.state.props.profile;
   return (
     <div className="profile">
       <Navbar />
@@ -42,10 +43,8 @@ export default function MyProfile(props) {
           <div className="col-md-3">
             <div className="row">
               <Link to="/setting/">
-                <a href="/" className="btn text-light ">
-                  Setting
-                  <i class="fas fa-cog mr-2 text-light"></i>
-                </a>
+                Setting
+                <i className="fas fa-cog mr-2 text-light"></i>
               </Link>
               <NotificationsList
                 notifications={notifications}

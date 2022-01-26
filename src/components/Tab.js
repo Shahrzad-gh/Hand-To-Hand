@@ -28,9 +28,9 @@ export default class Tab extends Component {
     }
 
     return (
-      <a className={className} onClick={onClick}>
+      <button className={className} onClick={onClick}>
         {label}
-      </a>
+      </button>
     );
   }
 }

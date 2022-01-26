@@ -1,6 +1,5 @@
 export const updateImageProfile = (profileImage) => {
   return (dispatch, getState, { getFirebase }) => {
-    console.log("Action", profileImage.url);
     const firebase = getFirebase();
 
     let user = firebase.auth().currentUser;
