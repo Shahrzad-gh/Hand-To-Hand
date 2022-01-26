@@ -30,10 +30,10 @@ function ProfileThumbnail(props) {
         <hr />
         <h6>Followers</h6>
         <p>1</p>
-        <hr />
+        <hr />*/}
         <Link to={{ pathname: "myProfile", state: { props } }}>
           View Profile
-        </Link>*/}
+        </Link>
       </div>
     </div>
   );
