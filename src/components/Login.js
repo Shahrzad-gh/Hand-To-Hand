@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import { signIn } from "../store//actions/authActions";
 import { Redirect } from "react-router-dom";
 class Login extends Component {
@@ -19,7 +19,7 @@ class Login extends Component {
   };
   render() {
     const { authError, auth } = this.props;
-    console.log("LOGIN*", auth);
+
     if (auth.uid) return <Redirect to="/Dashboard" auth={auth} />;
     return (
       <div className="login d-flex align-items-center flex-column justify-content-center">

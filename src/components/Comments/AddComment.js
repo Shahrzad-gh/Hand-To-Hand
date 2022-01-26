@@ -11,7 +11,6 @@ class Comment extends Component {
     userName: "",
   };
   handleChange = (e) => {
-    console.log("addcomment -E:", e);
     this.setState({
       [e.target.id]: e.target.value,
       userId: e.target.dataset.userid,
@@ -26,7 +25,6 @@ class Comment extends Component {
   };
   render() {
     const { auth, postId } = this.props;
-    console.log("WHOADD", auth);
     return (
       <div className="comment">
         <div className="card">

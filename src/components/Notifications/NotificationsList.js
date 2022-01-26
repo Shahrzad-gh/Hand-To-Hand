@@ -14,7 +14,7 @@ export default function NotificationsList(props) {
           <i className="fas fa-ellipsis-v"></i>
         </button> */}
       </div>
-      <div className="card z-depth-0 bg-light p-0">
+      <div className="card z-depth-0 p-0">
         <div className="containe-md  p-0">
           <div className="col-md p-0">
             <div className="row m-0">

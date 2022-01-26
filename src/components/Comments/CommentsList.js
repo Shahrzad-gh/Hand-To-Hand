@@ -2,12 +2,10 @@ import React from "react";
 import CommentSummary from "./CommentSummary";
 
 export default function CommentList({ comments, auth }) {
-  console.log("comment-list", comments);
   return (
     <div className="commentsList">
       {comments &&
         comments.map((comment) => {
-          console.log("map", comment);
           return (
             <CommentSummary
               comment={comment}

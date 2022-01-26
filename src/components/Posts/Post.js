@@ -7,7 +7,6 @@ export default class Post extends Component {
   };
   handleClick = (e) => {
     let newCount = this.state + 1;
-    console.log("Like count", newCount);
     this.setState({
       likeCount: newCount,
     });

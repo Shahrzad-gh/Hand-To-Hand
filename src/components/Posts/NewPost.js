@@ -21,7 +21,6 @@ class NewPost extends Component {
     });
   };
   handleEmojiSelect = (Emoji) => {
-    console.log(this.state.content + Emoji.native);
     this.togglePicker();
 
     this.setState({ content: this.state.content + Emoji.native });
@@ -33,20 +32,15 @@ class NewPost extends Component {
     });
   };
   handleSubmit = (e) => {
-    console.log("ADD_POST", this.state);
     e.preventDefault();
     this.state.imgFile && this.props.uploadImage(this.state.imgFile);
     this.props.createPost(this.state);
   };
   handleUploadImage = (e) => {
-    console.log("img", URL.createObjectURL(e.target.files[0]));
-    this.setState(
-      {
-        url: URL.createObjectURL(e.target.files[0]),
-        imgFile: e.target.files[0],
-      },
-      console.log("url & imgFile", this.state)
-    );
+    this.setState({
+      url: URL.createObjectURL(e.target.files[0]),
+      imgFile: e.target.files[0],
+    });
   };
   render() {
     const { auth } = this.props;
