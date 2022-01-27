@@ -71,10 +71,10 @@ class PostSummary extends Component {
                   <strong className="mr-2">
                     {post.authorFirstName} {post.authorLastName}
                   </strong>
-                  <button className="right">
+                  <span className="right">
                     <i className="far fa-bookmark "></i>
-                  </button>
-                  <button className="right">
+                  </span>
+                  <span className="right">
                     {post.authorId === auth.uid ? (
                       <i
                         className="fas fa-trash mr-2"
@@ -82,7 +82,7 @@ class PostSummary extends Component {
                         onClick={this.handleDelete}
                       ></i>
                     ) : null}
-                  </button>
+                  </span>
                 </div>
               </div>
               <div className="card-content">
@@ -128,15 +128,15 @@ class PostSummary extends Component {
                 </button>
                 <span>{post.likeCount}</span>
 
-                <Link to={"/post/" + post.id} key={post.id}>
+                <Link to={"post/" + post.id} key={post.id}>
                   <i className="far fa-comment-alt mr-1 ml-2 text-dark"></i>
                   <span className="text-dark">{post.commentCount}</span>
                 </Link>
 
-                <button className="right">
+                <span className="right">
                   <i className="fas fa-eye mr-1"></i>
                   <span>{post.views}</span>
-                </button>
+                </span>
               </div>
             </div>
           </div>
