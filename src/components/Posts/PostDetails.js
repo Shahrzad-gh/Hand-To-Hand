@@ -97,31 +97,39 @@ class PostDetails extends Component {
                   </span>
                 </div>
                 <div className="card-footer">
-                  <button className="btn p-0" onClick={this.handleClick}>
-                    {!isLike && (
-                      <i
-                        id="like"
-                        data-userid={auth.uid}
-                        data-postid={postId}
-                        className="far fa-heart p-0 mr-1"
-                      ></i>
-                    )}
-                    {isLike && (
-                      <i
-                        id="unlike"
-                        data-userid={auth.uid}
-                        data-postid={postId}
-                        className="fas fa-heart p-0 mr-1"
-                      ></i>
-                    )}
-                  </button>
-                  <span>{post.likeCount}</span>
-                  <i className="far fa-comment-alt mr-1 ml-2"></i>
-                  <span>{post.commentCount}</span>
-                  <a className="right">
-                    <i className="fas fa-eye mr-1"></i>
-                    <span>{post.views}</span>
-                  </a>
+                  <div className="footer-item">
+                    <div>
+                      <span className="btn p-0" onClick={this.handleClick}>
+                        {!isLike && (
+                          <i
+                            id="like"
+                            data-userid={auth.uid}
+                            data-postid={postId}
+                            className="far fa-heart p-0 mr-1"
+                          ></i>
+                        )}
+                        {isLike && (
+                          <i
+                            id="unlike"
+                            data-userid={auth.uid}
+                            data-postid={postId}
+                            className="fas fa-heart p-0 mr-1"
+                          ></i>
+                        )}
+                      </span>
+                      <span>{post.likeCount}</span>
+                    </div>
+                    <div>
+                      <i className="far fa-comment-alt mr-1 ml-2"></i>
+                      <span>{post.commentCount}</span>
+                    </div>
+                  </div>
+                  <div className="footer-item">
+                    <a className="right">
+                      <i className="fas fa-eye mr-1"></i>
+                      <span>{post.views}</span>
+                    </a>
+                  </div>
                 </div>
                 <AddComment postId={postId} profile={profile} auth={auth} />
                 <CommentList comments={thisPostComments} auth={auth} />

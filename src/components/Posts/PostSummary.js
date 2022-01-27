@@ -108,35 +108,41 @@ class PostSummary extends Component {
                 </span>
               </div>
               <div className="card-footer col-md-12">
-                <button className="btn" onClick={this.handleClick}>
-                  {!isLike && (
-                    <i
-                      id="like"
-                      data-userid={auth.uid}
-                      data-postid={post.id}
-                      className="far fa-heart mr-1"
-                    ></i>
-                  )}
-                  {isLike && (
-                    <i
-                      id="unlike"
-                      data-userid={auth.uid}
-                      data-postid={post.id}
-                      className="fas fa-heart mr-1"
-                    ></i>
-                  )}
-                </button>
-                <span>{post.likeCount}</span>
-
-                <Link to={"post/" + post.id} key={post.id}>
-                  <i className="far fa-comment-alt mr-1 ml-2 text-dark"></i>
-                  <span className="text-dark">{post.commentCount}</span>
-                </Link>
-
-                <span className="right">
-                  <i className="fas fa-eye mr-1"></i>
-                  <span>{post.views}</span>
-                </span>
+                <div className="footer-item">
+                  <div>
+                    <span onClick={this.handleClick}>
+                      {!isLike && (
+                        <i
+                          id="like"
+                          data-userid={auth.uid}
+                          data-postid={post.id}
+                          className="far fa-heart mr-1"
+                        ></i>
+                      )}
+                      {isLike && (
+                        <i
+                          id="unlike"
+                          data-userid={auth.uid}
+                          data-postid={post.id}
+                          className="fas fa-heart mr-1"
+                        ></i>
+                      )}
+                    </span>
+                    <span>{post.likeCount}</span>
+                  </div>
+                  <div className="footer-item ">
+                    <Link to={"post/" + post.id} key={post.id}>
+                      <i className="far fa-comment-alt mr-1 ml-2 text-dark"></i>
+                      <span className="text-dark">{post.commentCount}</span>
+                    </Link>
+                  </div>
+                </div>
+                <div>
+                  <span className="right">
+                    <i className="fas fa-eye mr-1"></i>
+                    <span>{post.views}</span>
+                  </span>
+                </div>
               </div>
             </div>
           </div>

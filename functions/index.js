@@ -33,7 +33,6 @@ exports.postCreated = functions.firestore
       user: `${post.authorFirstName} ${post.authorLastName}`,
       time: admin.firestore.FieldValue.serverTimestamp(),
     };
-
     return createNotification(notification);
   });
 

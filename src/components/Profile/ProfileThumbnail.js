@@ -19,10 +19,12 @@ function ProfileThumbnail(props) {
         </div>
       </div>
       <div className="item text-center">
-        <h6>
-          {props.profile.firstName} &nbsp;
-          {props.profile.lastName}
-        </h6>
+        <Link to={{ pathname: "myProfile", state: { props } }}>
+          <h6>
+            {props.profile.firstName} &nbsp;
+            {props.profile.lastName}
+          </h6>{" "}
+        </Link>
         <p>@sherry</p>
       </div>
     </div>

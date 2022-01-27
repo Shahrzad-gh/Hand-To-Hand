@@ -3,6 +3,14 @@ html {
   background-color: #fff;
 }
 
+.fa,
+.fab,
+.fad,
+.fal,
+.far,
+.fas {
+  line-height: unset;
+}
 .Landing {
   background-image: url(https://image.freepik.com/free-photo/discussing-mobile-app_1098-18640.jpg);
   background-repeat: no-repeat;
@@ -467,7 +475,9 @@ nav,
 .img-height-20 {
   height: 20rem;
 }
-
+.nav-item {
+  cursor: pointer;
+}
 /* Logo Font */
 
 .font-family-DancingScript {

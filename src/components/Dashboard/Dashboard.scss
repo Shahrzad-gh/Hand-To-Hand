@@ -1,3 +1,7 @@
+html,
+body {
+  background-color: #efefef;
+}
 .dashboard {
   background-color: #efefef;
 }
@@ -43,6 +47,16 @@
   color: gray;
   font-weight: 500;
 }
+.postDetails .card-header {
+  padding-bottom: 0 !important;
+  background-color: #fff;
+  border: none;
+}
+.postDetails .card-footer {
+  padding-bottom: 0 !important;
+  background-color: #fff;
+  border: none;
+}
 .postsList .card {
   padding: 10px !important;
 }
@@ -77,4 +91,20 @@
 .profileThumbnail img {
   object-fit: cover;
   border: 4px solid #fff;
+}
+
+.post-content {
+  padding: 30px;
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

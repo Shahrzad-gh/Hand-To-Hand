@@ -66,7 +66,7 @@ export default compose(
   connect(mapStateToProps),
   firestoreConnect([
     { collection: "Posts", orderBy: ["createAt", "desc"] },
-    { collection: "notifications", limit: 3, orderBy: ["time", "desc"] },
+    { collection: "notifications", limit: 5, orderBy: ["time", "desc"] },
     { collection: "users", limit: 5 },
   ])
 )(Dashboard);

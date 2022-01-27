@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
+import "../App.css";
 export default class Tab extends Component {
   static propTypes = {
     activeTab: PropTypes.string.isRequired,
@@ -28,9 +28,9 @@ export default class Tab extends Component {
     }
 
     return (
-      <button className={className} onClick={onClick}>
+      <span className={className} onClick={onClick}>
         {label}
-      </button>
+      </span>
     );
   }
 }
