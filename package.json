@@ -2,7 +2,7 @@
   "name": "socialmedia",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://Shahrzad-gh.github.io/Hand-To-Hand",
+  "_comment": "'homepage': 'http://Shahrzad-gh.github.io/Hand-To-Hand'",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
