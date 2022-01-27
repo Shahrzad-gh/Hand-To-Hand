@@ -24,16 +24,6 @@ function ProfileThumbnail(props) {
           {props.profile.lastName}
         </h6>
         <p>@sherry</p>
-        {/* <hr /> */}
-        {/*<h6>Following</h6>
-        <p>10</p>
-        <hr />
-        <h6>Followers</h6>
-        <p>1</p>
-        <hr />*/}
-        <Link to={{ pathname: "myProfile", state: { props } }}>
-          View Profile
-        </Link>
       </div>
     </div>
   );
