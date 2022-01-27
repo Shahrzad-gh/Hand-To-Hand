@@ -478,7 +478,7 @@ nav,
   position: relative;
 }
 .card-content {
-  padding: 0;
+  padding: 0 !important;
 }
 .comment a i {
   position: absolute;
@@ -540,6 +540,10 @@ nav,
   justify-content: space-evenly;
   align-items: center;
   border-radius: 25px;
+}
+
+.profileThumbnail img {
+  border-radius: 50%;
 }
 .item {
   margin: 5px;
