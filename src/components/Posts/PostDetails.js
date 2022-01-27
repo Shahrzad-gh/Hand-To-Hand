@@ -41,7 +41,7 @@ class PostDetails extends Component {
   };
   render() {
     const { post, auth, comments, profile } = this.props;
-
+    console.log(this.props);
     const postId = this.props.match.params.id;
 
     const thisPostComments = comments
@@ -71,9 +71,9 @@ class PostDetails extends Component {
                   <strong className="mr-2">
                     {post.authorFirstName} {post.authorLastName}
                   </strong>
-                  <button className="btn right">
+                  <span className="btn right">
                     <i className="far fa-bookmark"></i>
-                  </button>
+                  </span>
                 </div>
                 <div className="card-content">
                   {post.imgFile ? (
@@ -136,7 +136,9 @@ class PostDetails extends Component {
   }
 }
 const mapStateToProps = (state, ownProps) => {
-  const id = ownProps.match.params.id;
+  console.log("own", ownProps);
+
+  const id = ownProps?.match.params.id;
   const posts = state.firestore.data.Posts;
   const allComments = state.firestore.data.comments;
   const post = posts ? posts[id] : null;
