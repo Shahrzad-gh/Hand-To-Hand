@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Hand-To-Hand/static/css/main.3351a2c7.chunk.css",
+    "main.js": "/Hand-To-Hand/static/js/main.85dad752.chunk.js",
+    "main.js.map": "/Hand-To-Hand/static/js/main.85dad752.chunk.js.map",
+    "runtime-main.js": "/Hand-To-Hand/static/js/runtime-main.012aee30.js",
+    "runtime-main.js.map": "/Hand-To-Hand/static/js/runtime-main.012aee30.js.map",
+    "static/css/2.0b0521d5.chunk.css": "/Hand-To-Hand/static/css/2.0b0521d5.chunk.css",
+    "static/js/2.ffa46633.chunk.js": "/Hand-To-Hand/static/js/2.ffa46633.chunk.js",
+    "static/js/2.ffa46633.chunk.js.map": "/Hand-To-Hand/static/js/2.ffa46633.chunk.js.map",
+    "index.html": "/Hand-To-Hand/index.html",
+    "precache-manifest.180ef4e0bb6b9db031e424700e02c081.js": "/Hand-To-Hand/precache-manifest.180ef4e0bb6b9db031e424700e02c081.js",
+    "service-worker.js": "/Hand-To-Hand/service-worker.js",
+    "static/css/2.0b0521d5.chunk.css.map": "/Hand-To-Hand/static/css/2.0b0521d5.chunk.css.map",
+    "static/css/main.3351a2c7.chunk.css.map": "/Hand-To-Hand/static/css/main.3351a2c7.chunk.css.map",
+    "static/js/2.ffa46633.chunk.js.LICENSE.txt": "/Hand-To-Hand/static/js/2.ffa46633.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.012aee30.js",
+    "static/css/2.0b0521d5.chunk.css",
+    "static/js/2.ffa46633.chunk.js",
+    "static/css/main.3351a2c7.chunk.css",
+    "static/js/main.85dad752.chunk.js"
+  ]
+}
