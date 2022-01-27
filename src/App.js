@@ -14,27 +14,13 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/">
-            <Landing />
-          </Route>
-          <Route exact path="/Dashboard">
-            <Dashboard />
-          </Route>
-          <Route path="/myProfile">
-            <MyProfile />
-          </Route>
-          <Route path="/setting">
-            <Setting />
-          </Route>
-          <Route path="/user/:id">
-            <UserProfile />
-          </Route>
-          <Route path="/post/:id">
-            <PostDetails />
-          </Route>
-          <Route path="/Message">
-            <Message />
-          </Route>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/Dashboard" component={Dashboard} />
+          <Route path="/myProfile" component={MyProfile} />
+          <Route path="/setting" component={Setting} />
+          <Route path="/user/:id" component={UserProfile} />
+          <Route path="/post/:id" component={PostDetails} />
+          <Route path="/Message" component={Message} />
         </Switch>
       </BrowserRouter>
     </div>
