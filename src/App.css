@@ -34,6 +34,30 @@ html {
   display: inline-block;
   width: 100%;
 }
+.search {
+  width: 40vw;
+}
+
+.signin-links input {
+  margin: unset !important;
+  border: none !important;
+  padding: 0px 5px !important;
+  border-radius: 20px !important;
+  background-color: #efefef !important;
+}
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-wrapper i,
+span {
+  color: #686868;
+}
+.nav-extended {
+  padding: 10px;
+  background-color: #fff;
+}
 
 /* .card {
   border-color: #e44d3a;

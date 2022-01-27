@@ -2,10 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { signOut } from "../../store/actions/authActions";
 import { connect } from "react-redux";
+import "../../App.css";
 function SignInLinks(props) {
   return (
-    <div>
-      <ul
+    <div className="signin-links">
+      <input
+        id="search"
+        // onChange={this.handleChange}
+        className="form-control form-control-md"
+        placeholder="Search"
+        type="text"
+      />
+      {/* <ul
         className="signInLinks right nav  mr-auto ml-5 hide-on-med-and-down right"
         id="nav-mobile"
       >
@@ -39,7 +47,7 @@ function SignInLinks(props) {
             {props.profile.initials}
           </button>
         </li>
-      </ul>
+      </ul> */}
     </div>
   );
 }

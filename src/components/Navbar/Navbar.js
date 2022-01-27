@@ -9,17 +9,19 @@ const Navbar = (props) => {
   const links = auth.uid ? <SignInLinks profile={profile} /> : <SignOutLinks />;
   return (
     <div>
-      <nav className="nav-extended grey darken-3 h-25">
+      <nav className="nav-extended h-25">
         <div className="container">
           <div className="nav-wrapper">
-            <Link to="#" className="brand-logo font-family-DancingScript">
-              Hand To Hand
-              <i className="fas fa-praying-hands"></i>
-            </Link>
+            <div>
+              <Link to="#" className="brand-logo font-family-DancingScript">
+                <span> Hand To Hand </span>
+                <i className="fas fa-praying-hands"></i>
+              </Link>
+            </div>
             {/* <a href="#" data-target="mobile-demo" className="sidenav-trigger">
               <i className="material-icons">menu</i>
             </a> */}
-            {links}
+            <div>{links}</div>
           </div>
         </div>
       </nav>
