@@ -1,0 +1,13 @@
+.storyList {
+  display: inline-flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  overflow: auto;
+}
+.story {
+  margin-right: 15px;
+  border: 1px solid #a1a1a1;
+  border-radius: 15px;
+  width: 10vw;
+  height: 200px;
+}
