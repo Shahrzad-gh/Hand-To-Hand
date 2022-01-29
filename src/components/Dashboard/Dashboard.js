@@ -12,6 +12,7 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import "./Dashboard.scss";
 import Menu from "../Menu";
+import StoryList from "../Story/StoryList";
 class Dashboard extends Component {
   render() {
     const { posts, auth, profile, notifications, users } = this.props;
@@ -40,6 +41,9 @@ class Dashboard extends Component {
             </div>
             <div className="col-md-6">
               <div className="col p-0">
+                <div className="list">
+                  <StoryList />
+                </div>
                 <NewPost />
                 <PostsList posts={posts} auth={auth} />
               </div>
