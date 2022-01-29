@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import SignInLinks from "./SignInLinks";
 import SignOutLinks from "./SignOutLinks";
-
+import "../../App.css";
 const Navbar = (props) => {
   const { auth, profile } = props;
   const links = auth.uid ? <SignInLinks profile={profile} /> : <SignOutLinks />;
@@ -18,9 +18,6 @@ const Navbar = (props) => {
                 <i className="fas fa-praying-hands"></i>
               </Link>
             </div>
-            {/* <a href="#" data-target="mobile-demo" className="sidenav-trigger">
-              <i className="material-icons">menu</i>
-            </a> */}
             <div>{links}</div>
           </div>
         </div>
