@@ -37,6 +37,10 @@ html {
 .search {
   width: 40vw;
 }
+nav .brand-logo {
+  position: unset !important;
+  display: unset !important;
+}
 
 .signin-links input {
   margin: unset !important;
