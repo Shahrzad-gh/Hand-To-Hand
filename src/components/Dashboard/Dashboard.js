@@ -11,6 +11,7 @@ import { Redirect } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import "./Dashboard.scss";
+import Menu from "../Menu";
 class Dashboard extends Component {
   render() {
     const { posts, auth, profile, notifications, users } = this.props;
@@ -29,6 +30,7 @@ class Dashboard extends Component {
                   notifications={notifications}
                   suggestions={users}
                 />
+                <Menu />
                 <Suggestion
                   suggestions={users}
                   notifications={notifications}

@@ -108,3 +108,53 @@ body {
   flex-direction: row;
   align-items: center;
 }
+
+.menu {
+  padding: 10px;
+  border-radius: 25px;
+
+  background-color: #fff;
+}
+
+.menu ul {
+  display: block;
+  margin-bottom: 0;
+}
+// .menu-item {
+//   display: flex;
+//   justify-content: space-around;
+//   align-items: center;
+//   padding: 10px;
+// }
+.menu-item {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.menu-item p,
+i {
+  margin: 0 10px;
+  text-align: right;
+}
+
+.menu li {
+  border-top: 1px solid #efefef;
+}
+.menu li:first-child {
+  border-top: none;
+}
+
+.containe-md {
+  padding: 10px !important;
+}
+.btn {
+  width: 10vw;
+}
+.link {
+  text-decoration: none;
+}
+
+.link:visited {
+  color: initial;
+}
