@@ -7,37 +7,37 @@ function Menu() {
       <ul>
         <li>
           <div className="menu-item">
-            <i class="fas fa-home"></i>
+            <i className="fas fa-home"></i>
             <p>Home</p>
           </div>
         </li>
         <li>
           <div className="menu-item">
-            <i class="fas fa-user-friends"></i>
+            <i className="fas fa-user-friends"></i>
             <p>People</p>
           </div>
         </li>
         <li>
           <div className="menu-item">
-            <i class="fas fa-image"></i>
+            <i className="fas fa-image"></i>
             <p>Photos</p>
           </div>
         </li>
         <li>
           <div className="menu-item">
-            <i class="fas fa-newspaper"></i>
+            <i className="fas fa-newspaper"></i>
             <p>New Feed</p>
           </div>
         </li>
         <li>
           <div className="menu-item">
-            <i class="fas fa-id-badge"></i>
+            <i className="fas fa-id-badge"></i>
             <p>Profile</p>
           </div>
         </li>
         <li>
           <div className="menu-item">
-            <i class="fas fa-cog"></i>
+            <i className="fas fa-cog"></i>
             <p>Settings</p>
           </div>
         </li>
