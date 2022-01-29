@@ -10,4 +10,47 @@
   border-radius: 15px;
   width: 10vw;
   height: 200px;
+  position: relative;
+}
+
+.story img {
+  border-radius: 15px;
+  width: 10vw;
+  height: 200px;
+  object-fit: cover;
+}
+
+.profile-pic {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #a1a1a1;
+  border-radius: 10px;
+}
+
+.story:first-child .profile-pic {
+  position: absolute;
+  top: 70%;
+  left: 35%;
+  width: 30px;
+  height: 30px;
+  border: 1px double #a1a1a1;
+  outline: 1px solid #a1a1a1;
+  outline-offset: -5px;
+  border-style: double;
+  border-radius: 10px;
+}
+
+.story:first-child .profile-pic::after {
+  content: "+";
+  position: absolute;
+  top: 5%;
+  left: 30%;
+}
+
+.story .profile-pic img {
+  width: 30px;
+  height: 30px;
 }
