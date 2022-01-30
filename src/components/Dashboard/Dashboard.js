@@ -13,6 +13,7 @@ import { compose } from "redux";
 import "./Dashboard.scss";
 import Menu from "../Menu";
 import StoryList from "../Story/StoryList";
+import RequestList from "../RequestList";
 class Dashboard extends Component {
   render() {
     const { posts, auth, profile, notifications, users } = this.props;
@@ -50,6 +51,7 @@ class Dashboard extends Component {
             </div>
             <div className="col-md-3">
               <Login />
+              <RequestList />
               <NotificationsList notifications={notifications} auth={auth} />
             </div>
           </div>
