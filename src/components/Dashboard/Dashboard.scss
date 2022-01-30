@@ -173,3 +173,65 @@ i {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+.requestList {
+  padding: 10px;
+  background-color: #efefef;
+}
+.requestList .card {
+  background-color: #efefef;
+}
+.request {
+  padding: 10px;
+  background-color: #fff;
+  margin-bottom: 10px;
+  border-radius: 25px;
+}
+.requestList .card-header {
+  padding-bottom: 0 !important;
+  background-color: #efefef;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.request img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 25px;
+  margin: 10px;
+}
+
+.request-item {
+  display: inline-flex;
+}
+
+.request-item-btn {
+  text-align: center;
+}
+
+.request-item-btn button {
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.request-item-btn .accept {
+  background-color: #1e71a2;
+  color: #fff;
+}
+.request-item-btn .decline {
+  background-color: #fff;
+  border: 1px solid #efefef;
+  color: #000;
+}
+
+.requestList .badge {
+  padding: 5px;
+  border-radius: 50%;
+  background-color: #1e71a2;
+  color: #fff;
+}
