@@ -9,7 +9,7 @@ function RequestList() {
         <span>
           <b>Requests</b>
         </span>
-        <spna className="badge">3</spna>
+        <p className="badge">3</p>
         {/* <button className="btn right">
           <i className="fas fa-ellipsis-v"></i>
         </button> */}
