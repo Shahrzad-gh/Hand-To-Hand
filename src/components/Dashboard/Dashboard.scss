@@ -48,7 +48,7 @@ body {
   font-weight: 500;
 }
 .postDetails .card-header {
-  padding-bottom: 0 !important;
+  // padding-bottom: 0 !important;
   background-color: #fff;
   border: none;
 }
@@ -138,6 +138,12 @@ i {
   text-align: right;
 }
 
+#unlike {
+  color: red;
+}
+#like {
+  color: #000;
+}
 .menu li {
   border-top: 1px solid #efefef;
 }
@@ -194,6 +200,21 @@ i {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.postDetails .card-header {
+  // padding-bottom: 0 !important;
+  // background-color: #fff;
+  // border: none;
+  border-radius: 25px;
+  padding: 0.75rem 1.25re;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+}
+
+.postDetails .card {
+  border-radius: 25px;
+  padding: 10px !important;
 }
 
 .request img {

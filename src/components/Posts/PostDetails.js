@@ -99,7 +99,7 @@ class PostDetails extends Component {
                 <div className="card-footer">
                   <div className="footer-item">
                     <div>
-                      <span className="btn p-0" onClick={this.handleClick}>
+                      <span onClick={this.handleClick}>
                         {!isLike && (
                           <i
                             id="like"
