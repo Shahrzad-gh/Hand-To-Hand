@@ -10,6 +10,7 @@ class NewPost extends Component {
     content: "",
     showPicker: false,
     emoji: "",
+    imgblob: null,
     imgFile: null,
     url: null,
     file: [],
@@ -34,6 +35,7 @@ class NewPost extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.state.imgFile && this.props.uploadImage(this.state.imgFile);
+    console.log("new post", this.state);
     this.props.createPost(this.state);
   };
   handleUploadImage = (e) => {

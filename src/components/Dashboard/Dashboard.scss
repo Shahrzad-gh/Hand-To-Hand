@@ -110,15 +110,34 @@ body {
 }
 
 .menu {
-  padding: 10px;
   border-radius: 25px;
-
   background-color: #fff;
 }
 
 .menu ul {
   display: block;
   margin-bottom: 0;
+  padding: 20px 0;
+}
+.menu ul li {
+  border-left: 2px solid transparent;
+}
+
+.menu ul li:hover {
+  border-left: 2px solid #1e71a2;
+  cursor: pointer;
+}
+.link {
+  color: #000 !important;
+}
+.link:active {
+  color: #000;
+}
+.link:visited {
+  color: #000;
+}
+.link:hover {
+  text-decoration: none;
 }
 // .menu-item {
 //   display: flex;
@@ -255,4 +274,10 @@ i {
   border-radius: 50%;
   background-color: #1e71a2;
   color: #fff;
+}
+
+.suggestion .btn {
+  width: 5vw;
+  font-size: 10px;
+  padding: 0;
 }

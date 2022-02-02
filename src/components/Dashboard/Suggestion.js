@@ -34,7 +34,8 @@ export default function Suggestion(props) {
                           className="rounded-circle border-dark mr-2"
                         />
                         <strong className="mr-2">
-                          {user.firstName} {user.lastName}
+                          {/* {user.firstName} {user.lastName} */}
+                          {user.username}
                         </strong>
 
                         <Link
@@ -49,7 +50,8 @@ export default function Suggestion(props) {
                           }}
                           className="right"
                         >
-                          <i className="fas fa-plus"></i>
+                          {/* <i className="fas fa-plus"></i> */}
+                          <button className="btn right">Follow</button>
                         </Link>
                       </div>
                     </div>
