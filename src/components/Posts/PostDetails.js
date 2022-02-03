@@ -69,7 +69,8 @@ class PostDetails extends Component {
                     className="rounded-circle border-dark mr-2"
                   />
                   <strong className="mr-2">
-                    {post.authorFirstName} {post.authorLastName}
+                    {/* {post.authorFirstName} {post.authorLastName} */}
+                    {post.authorUsername}
                   </strong>
                   <span className="btn right">
                     <i className="far fa-bookmark"></i>

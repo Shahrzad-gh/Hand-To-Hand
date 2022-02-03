@@ -31,6 +31,7 @@ export const createPost = (post) => {
         authorFirstName: profile.firstName,
         authorLastName: profile.lastName,
         authorId: authorId,
+        authorUsername: profile.username,
         likeCount: 0,
         imgFile: post.url,
         url: post.url,

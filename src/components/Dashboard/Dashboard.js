@@ -32,7 +32,12 @@ class Dashboard extends Component {
                   notifications={notifications}
                   suggestions={users}
                 />
-                <Menu />
+                <Menu
+                  auth={auth}
+                  profile={profile}
+                  notifications={notifications}
+                  suggestions={users}
+                />
                 <Suggestion
                   suggestions={users}
                   notifications={notifications}
