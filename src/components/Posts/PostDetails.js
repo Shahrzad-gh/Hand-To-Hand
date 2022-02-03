@@ -41,7 +41,7 @@ class PostDetails extends Component {
   };
   render() {
     const { post, auth, comments, profile } = this.props;
-    console.log(this.props);
+
     const postId = this.props.match.params.id;
 
     const thisPostComments = comments
@@ -73,7 +73,7 @@ class PostDetails extends Component {
                     {post.authorUsername}
                   </strong>
                   <span className="btn right">
-                    <i className="far fa-bookmark"></i>
+                    <i className="fas fa-ellipsis-h"></i>
                   </span>
                 </div>
                 <div className="card-content">
@@ -145,8 +145,6 @@ class PostDetails extends Component {
   }
 }
 const mapStateToProps = (state, ownProps) => {
-  console.log("own", ownProps);
-
   const id = ownProps?.match.params.id;
   const posts = state.firestore.data.Posts;
   const allComments = state.firestore.data.comments;
