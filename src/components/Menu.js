@@ -2,18 +2,18 @@ import React from "react";
 import "./Dashboard/Dashboard.scss";
 import { Link } from "react-router-dom";
 
-function Menu() {
+function Menu(props) {
   return (
     <div className="menu">
       <ul>
-        <Link to="/dashboard" className="link">
-          <li>
+        <li>
+          <Link to="/dashboard" className="link">
             <div className="menu-item">
               <i className="fas fa-home"></i>
               <p>Home</p>
             </div>
-          </li>
-        </Link>
+          </Link>
+        </li>
         <li>
           <div className="menu-item">
             <i className="fas fa-user-friends"></i>
@@ -33,19 +33,24 @@ function Menu() {
           </div>
         </li>
         <li>
-          <div className="menu-item">
-            <i className="fas fa-id-badge"></i>
-            <p>Profile</p>
-          </div>
+          <Link
+            to={{ pathname: "myProfile", state: { props } }}
+            className="link"
+          >
+            <div className="menu-item">
+              <i className="fas fa-id-badge"></i>
+              <p>Profile</p>
+            </div>
+          </Link>
         </li>
-        <Link to="/setting" className="link">
-          <li>
+        <li>
+          <Link to="/setting" className="link">
             <div className="menu-item">
               <i className="fas fa-cog"></i>
               <p>Settings</p>
             </div>
-          </li>
-        </Link>
+          </Link>
+        </li>
       </ul>
     </div>
   );
