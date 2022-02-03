@@ -23,7 +23,7 @@ function ProfileThumbnail(props) {
           <h6>
             {props.profile.firstName} &nbsp;
             {props.profile.lastName}
-          </h6>{" "}
+          </h6>
         </Link>
         <p>@{props.profile.username}</p>
       </div>
