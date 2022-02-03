@@ -31,7 +31,7 @@ export default class TabList extends Component {
 
     return (
       <div className="tabList">
-        <nav>
+        <nav className="navbar-profile">
           <div
             className="nav nav-pills text-dark bg-tabcontent mb-2"
             id="profile-links"

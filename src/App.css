@@ -93,7 +93,12 @@ span {
 .profile-short-info {
   padding-top: 20px;
 }
-
+.postSummary .post-menu {
+  color: #a1a1a1;
+  padding: 2px 5px;
+  border-radius: 5px;
+  border: 1px solid #a1a1a1a1;
+}
 .profile-link a {
   margin-right: 15px;
 }
@@ -467,9 +472,9 @@ i {
   display: block;
 }
 
-.nav .nav-pills {
+/* .nav .nav-pills {
   background-color: #1e71a2;
-}
+} */
 
 .message-page {
   float: left;
@@ -495,6 +500,14 @@ nav,
 
 .nav-pills .nav-link.active {
   background-color: transparent !important;
+  color: #1e71a2;
+  font-weight: bold;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: #1e71a2;
+  text-decoration-thickness: 3px;
+  -webkit-text-decoration-color: #1e71a2; /* Safari */
+  text-decoration-style: solid;
 }
 
 .img-height-20 {
@@ -619,4 +632,22 @@ input[type="checkbox"] {
   opacity: 0;
   padding: 10px 0px 9px;
   display: none;
+}
+
+.profile-information .card {
+  border-radius: 20px;
+  padding: 20px !important;
+}
+
+.profile-information .card-header {
+  background-color: #fff;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.navbar-profile {
+  background-color: #efefef;
 }
