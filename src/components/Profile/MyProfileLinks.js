@@ -28,7 +28,7 @@ class MyProfileLinks extends Component {
             {user.firstName} {user.lastName}
           </strong>
           <p>
-            username
+            {user.username}
             <i className="far fa-star ml-2"></i>
             <i className="far fa-star"></i>
             <i className="far fa-star"></i>
