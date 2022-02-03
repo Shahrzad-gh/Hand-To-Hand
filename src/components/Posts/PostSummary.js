@@ -73,16 +73,16 @@ class PostSummary extends Component {
                     {post.authorUsername}
                   </strong>
                   <span className="right">
-                    <i className="far fa-bookmark "></i>
+                    <i className="post-menu fas fa-ellipsis-h"></i>
                   </span>
                   <span className="right">
-                    {post.authorId === auth.uid ? (
+                    {/* {post.authorId === auth.uid ? (
                       <i
                         className="fas fa-trash mr-2"
                         data-postid={post.id}
                         onClick={this.handleDelete}
                       ></i>
-                    ) : null}
+                    ) : null} */}
                   </span>
                 </div>
               </div>

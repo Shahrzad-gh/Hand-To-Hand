@@ -29,7 +29,7 @@ export default class Post extends Component {
                   />
                   <strong className="mr-2">Name</strong>
                   <button className="btn right">
-                    <i class="far fa-bookmark"></i>
+                    <i className="fas fa-ellipsis-h"></i>
                   </button>
                 </div>
               </div>
