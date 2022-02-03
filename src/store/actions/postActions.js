@@ -1,3 +1,5 @@
+import { getFirebase } from "react-redux-firebase";
+
 export const createPost = (post) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     //make async call to database
@@ -7,18 +9,18 @@ export const createPost = (post) => {
     const authorId = getState().firebase.auth.uid;
     console.log(getState().firebase.auth);
     const firebase = getFirebase();
-    post.imgFile &&
-      firebase
-        .storage()
-        .ref("Photos/")
-        .child(post.imgFile.name)
-        .getDownloadURL()
-        .then((url) => {
-          //url is firebase Image URL that add to a post
-          post.url = url;
-          console.log("URL", url);
-        })
-        .catch((err) => console.log("dl", err));
+    // post.imgFile &&
+    //   firebase
+    //     .storage()
+    //     .ref("Photos/")
+    //     .child(post.imgFile.name)
+    //     .getDownloadURL()
+    //     .then((url) => {
+    //       //url is firebase Image URL that add to a post
+    //       post.url = url;
+    //       console.log("URL", url);
+    //     })
+    //     .catch((err) => console.log("dl", err));
     // console.log("url", post.url);
     // console.log("url-imgfile", post.imgFile.url);
 
@@ -185,15 +187,16 @@ export const deleteComment = (comment) => {
   };
 };
 
-export const uploadImage = (imgFile) => {
+export const uploadImage = (post) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
-    console.log("upload Action:", imgFile);
+    console.log("upload Action:", post.imgFile);
+    console.log(post);
     const authorId = getState().firebase.auth.uid;
     console.log("upload-userID", authorId);
     const firebase = getFirebase();
-    const storageRef = firebase.storage().ref("Photos/" + imgFile.name);
+    const storageRef = firebase.storage().ref("Photos/" + post.imgFile.name);
 
-    var task = storageRef.put(imgFile);
+    var task = storageRef.put(post.imgFile);
 
     task.on(
       firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
@@ -235,9 +238,11 @@ export const uploadImage = (imgFile) => {
       function () {
         // Upload completed successfully, now we can get the download URL
         task.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+          post.url = downloadURL;
           console.log("File available at", downloadURL);
         });
       }
     );
+    // task.then(() => createPost(post))
   };
 };
