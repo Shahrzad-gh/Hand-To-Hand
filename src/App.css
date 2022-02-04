@@ -73,9 +73,10 @@ span {
   background-color: #fff;
 }
 
-/* .card {
-  border-color: #e44d3a;
-} */
+.card {
+  border-radius: 25px;
+  padding: 20px;
+}
 
 .NotificationsList li {
   list-style: none;
@@ -92,6 +93,9 @@ span {
 
 .profile-short-info {
   padding-top: 20px;
+}
+.profile-short-info p {
+  font-size: 1rem;
 }
 .postSummary .post-menu {
   color: #a1a1a1;
@@ -497,7 +501,9 @@ nav,
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
-
+.container-xl {
+  margin: unset;
+}
 .nav-pills .nav-link.active {
   background-color: transparent !important;
   color: #1e71a2;
