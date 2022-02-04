@@ -19,8 +19,8 @@ class Profile extends Component {
   render() {
     const { photoURL } = this.props;
     return (
-      <div className="card text-center m-0">
-        <div className="profile card-img  bg-light">
+      <div className="card text-center">
+        <div className="profile card-img ">
           <img
             id="fileUpload"
             width="120"
@@ -44,23 +44,27 @@ class Profile extends Component {
         </div>
 
         <div className="text-center card-content profile-short-info ">
-          <div className="row">
-            <div className="col s5">
+          <div className="col">
+            <div>
               <div>
-                <h6>Following</h6>
+                <p>Posts</p>
               </div>
               <p>4</p>
             </div>
-            <div className="col s5">
+            <div>
               <div>
-                <h6>Followers</h6>
+                <p>Following</p>
+              </div>
+              <p>40</p>
+            </div>
+            <div>
+              <div>
+                <p>Followers</p>
               </div>
               <p>40</p>
             </div>
           </div>
-          <button className="btn" hidden={true}>
-            Follow
-          </button>
+          <button className="btn">Edit</button>
         </div>
       </div>
     );

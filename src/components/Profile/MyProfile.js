@@ -6,6 +6,7 @@ import Suggestion from "../Dashboard/Suggestion";
 import MyProfileLinks from "./MyProfileLinks";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
+import Menu from "../Menu";
 export default function MyProfile() {
   const location = useLocation();
   const auth = location.state.props.auth;
@@ -29,6 +30,7 @@ export default function MyProfile() {
           <div className="col-md-3">
             <div className="col">
               <Profile photoURL={auth.photoURL} />
+              <Menu />
               <Suggestion
                 suggestions={userSuggestions}
                 notifications={notifications}
@@ -36,7 +38,7 @@ export default function MyProfile() {
             </div>
           </div>
           <div className="col-md-6">
-            <div className="col p-0">
+            <div className="p-0">
               <MyProfileLinks user={user} />
             </div>
           </div>
@@ -46,10 +48,10 @@ export default function MyProfile() {
                 Setting
                 <i className="fas fa-cog mr-2 text-light"></i>
               </Link>
-              <NotificationsList
+              {/* <NotificationsList
                 notifications={notifications}
                 suggestions={userSuggestions}
-              />
+              /> */}
             </div>
           </div>
         </div>
