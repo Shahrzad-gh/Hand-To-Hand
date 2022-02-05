@@ -10,18 +10,19 @@ const createNotification = (notification) => {
     .then((doc) => console.log("notification added", doc));
 };
 
-// exports.postliked = functions.database.ref("Posts/{postId}")
-//   .onUpdate((change, context) => {
-//     const before =change.before.val();
-//     const after = change.after.val();
-//     change.after.
-//     const notification = {
-//       content: "Added a new like",
-//       user: `${post.authorFirstName} ${post.authorLastName}`,
-//       time: admin.firestore.FieldValue.serverTimestamp(),
-//     };
-//     return createNotification(notification);
-//   });
+exports.postliked = functions.database
+  .ref("Posts/{postId}")
+  .onUpdate((change, context) => {
+    const before = change.before.val();
+    const after = change.after.val();
+    //change.after.
+    const notification = {
+      content: "Added a new like",
+      user: `${post.username}`,
+      time: admin.firestore.FieldValue.serverTimestamp(),
+    };
+    return createNotification(notification);
+  });
 
 exports.postCreated = functions.firestore
   .document("Posts/{postId}")
