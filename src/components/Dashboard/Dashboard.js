@@ -17,6 +17,7 @@ import RequestList from "../RequestList";
 class Dashboard extends Component {
   render() {
     const { posts, auth, profile, notifications, users } = this.props;
+
     if (!auth.uid) return <Redirect to="/Login" />;
 
     return (
@@ -47,9 +48,9 @@ class Dashboard extends Component {
             </div>
             <div className="col-md-6">
               <div className="col p-0">
-                <div className="list">
+                {/* <div className="list">
                   <StoryList />
-                </div>
+                </div> */}
                 <NewPost />
                 <PostsList posts={posts} auth={auth} />
               </div>

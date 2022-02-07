@@ -48,6 +48,7 @@ class NewPost extends Component {
   };
   render() {
     const { auth } = this.props;
+
     if (!auth.uid) return <Redirect to="/Login" />;
     return (
       <div className="newPost">

@@ -41,9 +41,8 @@ class PostDetails extends Component {
   };
   render() {
     const { post, auth, comments, profile } = this.props;
-
+    console.log(post);
     const postId = this.props.match.params.id;
-
     const thisPostComments = comments
       ? Object.entries(comments).filter(
           ([key, comment]) => comment && comment.postId === postId

@@ -19,7 +19,6 @@ class Login extends Component {
   };
   render() {
     const { authError, auth } = this.props;
-
     if (auth.uid) return <Redirect to="/dashboard" auth={auth} />;
     return (
       <div className="login d-flex align-items-center flex-column justify-content-center">
