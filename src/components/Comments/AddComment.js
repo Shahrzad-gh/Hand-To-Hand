@@ -24,7 +24,8 @@ class Comment extends Component {
     this.props.addComment(this.state);
   };
   render() {
-    const { auth, postId } = this.props;
+    const { auth, postId, profile } = this.props;
+    console.log("props", this.props);
     return (
       <div className="comment">
         <div className="card">
@@ -35,7 +36,7 @@ class Comment extends Component {
                   <div className="input-field col-md-12">
                     <textarea
                       data-userid={auth.uid}
-                      data-username={auth.displayName}
+                      data-username={profile.username}
                       data-postid={postId}
                       id="content"
                       placeholder="share a comment"
@@ -55,12 +56,13 @@ class Comment extends Component {
     );
   }
 }
-// const mapStateToProps = (state) => {
-//   console.log("STATE", state);
-//   return {
-//     auth: state.firebase.auth,
-//   };
-// };
+const mapStateToProps = (state) => {
+  console.log("STATE", state);
+  return {
+    auth: state.firebase.auth,
+    profile: state.firebase.profile,
+  };
+};
 const mapDispatchToProps = (dispatch) => {
   return { addComment: (comment) => dispatch(addComment(comment)) };
 };

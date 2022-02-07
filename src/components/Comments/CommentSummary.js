@@ -20,6 +20,7 @@ class CommentSummary extends Component {
   };
   render() {
     const { comment, username, auth } = this.props;
+
     return (
       <div className="comment">
         <div className="card col-md-12">
