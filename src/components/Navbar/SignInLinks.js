@@ -13,6 +13,9 @@ function SignInLinks(props) {
         placeholder="Search"
         type="text"
       />
+      <button className="btn btn-floating bg-floating right" type="button">
+        {props.profile.initials}
+      </button>
       {/* <ul
         className="signInLinks right nav  mr-auto ml-5 hide-on-med-and-down right"
         id="nav-mobile"
