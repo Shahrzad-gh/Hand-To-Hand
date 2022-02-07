@@ -10,8 +10,12 @@ import fbConfig from "./config/fbconfig";
 import rootReducer from "./store/reducers/rootReducer";
 import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
 import { reduxFirestore, getFirestore } from "redux-firestore";
+import { loadState, saveState } from "./localStorage";
+// const persistedState = loadState();
+
 const store = createStore(
   rootReducer,
+  // persistedState,
   compose(
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
     reduxFirestore(fbConfig),
@@ -22,6 +26,9 @@ const store = createStore(
     })
   )
 );
+// store.subscribe(() => {
+//   saveState(store.getState());
+// });
 store.firebaseAuthIsReady.then(() => {
   ReactDOM.render(
     <Provider store={store}>
