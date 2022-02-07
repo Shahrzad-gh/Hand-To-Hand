@@ -44,6 +44,7 @@ exports.userJoined = functions.auth.user().onCreate((user) => {
     .doc(user.uid)
     .get()
     .then((doc) => {
+      console.log(doc.data());
       const newUser = doc.data();
       const notification = {
         content: "Joined the H2H",
