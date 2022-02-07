@@ -2,7 +2,9 @@ body,
 html {
   background-color: #fff;
 }
-
+strong {
+  font-weight: 700;
+}
 img {
   image-rendering: optimizeSpeed; /*                     */
   image-rendering: -moz-crisp-edges; /* Firefox             */
@@ -11,6 +13,15 @@ img {
   image-rendering: pixelated; /* Chrome as of 2019   */
   image-rendering: optimize-contrast; /* CSS3 Proposed       */
   -ms-interpolation-mode: nearest-neighbor; /* IE8+                */
+}
+.signin-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.btn-floating {
+  margin: 10px;
 }
 
 .fa,
