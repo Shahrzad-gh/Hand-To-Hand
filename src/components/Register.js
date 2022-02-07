@@ -9,6 +9,7 @@ class Register extends Component {
     password: "",
     firstName: "",
     lastName: "",
+    userName: "",
   };
   handleChange = (e) => {
     this.setState({
@@ -17,13 +18,15 @@ class Register extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
+    console.log(this.state);
     this.props.signUp(this.state);
   };
   render() {
     const { auth, authError } = this.props;
+
     if (auth.uid) return <Redirect to="/Dashboard" />;
     return (
- <div className="register d-flex align-items-center flex-column justify-content-center ">
+      <div className="register d-flex align-items-center flex-column justify-content-center ">
         <div className="container-md col-md-12 bg-light">
           <form className="mt-3" onSubmit={this.handleSubmit}>
             <div className="form-group">
@@ -41,6 +44,15 @@ class Register extends Component {
                 id="lastName"
                 className="form-control form-control-md"
                 placeholder="lastName"
+                type="text"
+              />
+            </div>
+            <div className="form-group">
+              <input
+                onChange={this.handleChange}
+                id="username"
+                className="form-control form-control-md"
+                placeholder="username"
                 type="text"
               />
             </div>
@@ -80,10 +92,9 @@ class Register extends Component {
               <p className="text-danger text-center">{authError}</p>
             ) : null}
           </form>
-        </div> 
         </div>
+      </div>
     );
- 
   }
 }
 const mapStateToProps = (state) => {
